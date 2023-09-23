@@ -1,5 +1,5 @@
 import React from "react";
-import axios from 'axios';
+import axios from "axios";
 import { useState, useEffect } from "react";
 import ChartistGraph from "react-chartist";
 // react-bootstrap components
@@ -19,31 +19,31 @@ import {
 } from "react-bootstrap";
 
 function DetailPage() {
+  const [resourcedata, setresourceData] = useState({ data: [] });
 
-  const [resourcedata, setresourceData] = useState({ data: []});
-  
-    // data 가져오기
-    async function getresourceData() {
-      try {
-        const response = await axios.get('http://10.10.10.105:8080/resource/getinfoall?date=2023-09-10')
-            .then(response => {
-                console.log(response.data)
-                let save = [...response.data]
-                setresourceData(save)
-            })
-      } catch (error) {
-            console.log(error)
-            alert('Error')
-      }
+  // data 가져오기
+  async function getresourceData() {
+    try {
+      const response = await axios
+        .get("http://222.98.255.30:12344/resource/getinfoall?date=2023-09-10")
+        .then((response) => {
+          console.log(response.data);
+          let save = [...response.data];
+          setresourceData(save);
+        });
+    } catch (error) {
+      console.log(error);
+      alert("Error");
     }
-  
-    useEffect(() => {
-      getresourceData();
-    }, [])
+  }
 
-    // 출력
-    function showResource() {
-    if ( resourcedata.length > 0 ) {
+  useEffect(() => {
+    getresourceData();
+  }, []);
+
+  // 출력
+  function showResource() {
+    if (resourcedata.length > 0) {
       return resourcedata.map((realdata2) => (
         <div>
           {realdata2.date}
@@ -52,22 +52,27 @@ function DetailPage() {
           {realdata2.symbol}
           {realdata2.unit}
         </div>
-      ));;
-    }}
+      ));
+    }
+  }
 
-    // 자재 테이블
-    function resourceTable() {
-      if ( resourcedata.length > 0 ) {
-        return resourcedata && resourcedata.map((item) => (
+  // 자재 테이블
+  function resourceTable() {
+    if (resourcedata.length > 0) {
+      return (
+        resourcedata &&
+        resourcedata.map((item) => (
           <tr>
-          <td>{item.date}</td>
-          <td>{item.engName}</td>
-          <td>{item.korName}</td>
-          <td>{item.price}</td>
-          <td>{item.unit}</td>
-        </tr>
-        ));;
-      }}
+            <td>{item.date}</td>
+            <td>{item.engName}</td>
+            <td>{item.korName}</td>
+            <td>{item.price}</td>
+            <td>{item.unit}</td>
+          </tr>
+        ))
+      );
+    }
+  }
 
   return (
     <>
@@ -135,7 +140,7 @@ function DetailPage() {
           </Col>
         </Row>
         <Row>
-        <Col md="6">
+          <Col md="6">
             <Card className="strpied-tabled-with-hover">
               <Card.Header>
                 <Card.Title as="h4">원자재 실구매가</Card.Title>
@@ -151,15 +156,13 @@ function DetailPage() {
                       <th className="border-0">UNIT</th>
                     </tr>
                   </thead>
-                  <tbody>
-                  {resourceTable()}
-                  </tbody>
+                  <tbody>{resourceTable()}</tbody>
                 </Table>
               </Card.Body>
             </Card>
           </Col>
-          </Row>
-          <Row>
+        </Row>
+        <Row>
           <Col md="6">
             <Card className="card-plain table-plain-bg">
               <Card.Header>
@@ -189,8 +192,8 @@ function DetailPage() {
           </Col>
         </Row>
       </Container>
-        {/* // 데이터 출력 */}
-     <div>{showResource()}</div>
+      {/* // 데이터 출력 */}
+      //<div>{showResource()}</div>
     </>
   );
 }

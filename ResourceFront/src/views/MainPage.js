@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import ChartistGraph from "react-chartist";
 // react-bootstrap components
 import {
@@ -18,33 +18,33 @@ import {
 } from "react-bootstrap";
 
 function MainPage() {
-
-  const [data, setData] = useState({ data: []});
+  const [data, setData] = useState({ data: [] });
   const [xData, setXData] = useState();
-  
+
   // data 가져오기
   const getfun = async function getData() {
     try {
-      const response = await axios.get('http://10.10.10.105:8080/exchange/getinfoall?date=2023-09-10')
-          .then(response => {
-              console.log(response.data)
-              let save = [...response.data]
-              setData(save)
-          })
+      const response = await axios
+        .get("http://222.98.255.30:12344/exchange/getinfoall?date=2023-09-10")
+        .then((response) => {
+          console.log(response.data);
+          let save = [...response.data];
+          setData(save);
+        });
     } catch (error) {
-          console.log(error)
-          alert('Error')
+      console.log(error);
+      alert("Error");
     }
-  }
+  };
 
   useEffect(() => {
     getfun();
-  }, [])
+  }, []);
 
   // 출력
   function showData() {
     let x = [];
-    if ( data.length > 0 ) {
+    if (data.length > 0) {
       return data.map((realdata) => (
         <div key={realdata.date}>
           {realdata.currency}
@@ -53,27 +53,32 @@ function MainPage() {
           {realdata.exchangeRate}
         </div>
       ));
-    }}
-  
-    // 꺾은선 그래프 데이터 (x축:date / y축:price)
+    }
+  }
 
-    // function graphData() {
-    //   if(data.length > 0) {
-    //     return data.map((graph) => {
-    //         <>
-    //         data={graph.date}, {graph.currency}
-    //         type="Line"
-    //         </>
-    //     });
-    //   }}
+  function xLine() {
+    let xxx = [];
+    if (data.length > 0) {
+      data.map((realdata) => xxx.push(realdata.date));
+    }
+    return xxx;
+  }
 
+  function yLine() {
+    let yyy = [];
+    if (data.length > 0) {
+      data.map((realdata) => yyy.push(realdata.exchangeRate));
+    }
+    console.log(yyy);
+    return yyy;
+  }
 
-   return (
-    <>
+  return (
+    <div>
       <Container fluid>
         {/* // 꺾은선그래프 */}
         <Row>
-          <Col md="6">
+          <Col md="12">
             <Card>
               <Card.Header>
                 <Card.Title as="h4">원자재 이름</Card.Title>
@@ -82,23 +87,12 @@ function MainPage() {
                 <div className="ct-chart" id="chartHours">
                   <ChartistGraph
                     data={{
-                      labels: [
-                        "9:00AM",
-                        "12:00AM",
-                        "3:00PM",
-                        "6:00PM",
-                        "9:00PM",
-                        "12:00PM",
-                        "3:00AM",
-                        "6:00AM",
-                      ],
-                      series: [
-                        [287, 385, 490, 492, 554, 586, 698, 695]
-                      ],
+                      labels: xLine(),
+                      series: [yLine()],
                     }}
                     type="Line"
-                    options = {options}
-                    responsiveOptions = {responsiveOptions}
+                    options={options}
+                    responsiveOptions={responsiveOptions}
                   />
                 </div>
               </Card.Body>
@@ -106,28 +100,31 @@ function MainPage() {
           </Col>
         </Row>
       </Container>
-       {/* // 데이터 출력 */}
-     <div>{showData()}</div>
-    </>
+      <div>{xLine()}</div>
+      {/* // 데이터 출력 */}
+      <div>{showData()}</div>
+    </div>
   );
 }
 
-const options = [{
-  low: 0,
-  high: 800,
-  showArea: false,
-  height: "245px",
-  axisX: {
-    showGrid: false,
+const options = [
+  {
+    low: 0,
+    high: 800,
+    showArea: false,
+    height: "245px",
+    axisX: {
+      showGrid: false,
+    },
+    lineSmooth: true,
+    showLine: true,
+    showPoint: true,
+    fullWidth: true,
+    chartPadding: {
+      right: 50,
+    },
   },
-  lineSmooth: true,
-  showLine: true,
-  showPoint: true,
-  fullWidth: true,
-  chartPadding: {
-    right: 50,
-  },
-}]
+];
 
 const responsiveOptions = [
   [
@@ -140,7 +137,6 @@ const responsiveOptions = [
       },
     },
   ],
-]
-
+];
 
 export default MainPage;
