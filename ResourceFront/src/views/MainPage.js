@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
 import ChartistGraph from "react-chartist";
 // react-bootstrap components
 import {
@@ -17,68 +18,93 @@ import {
   Tooltip,
 } from "react-bootstrap";
 
-function MainPage() {
-  const [data, setData] = useState({ data: [] });
-  const [xData, setXData] = useState();
+function DetailPage() {
+  const [resourcedata, setresourceData] = useState({ data: [] });
 
   // data 가져오기
-  const getfun = async function getData() {
+  async function getresourceData() {
     try {
       const response = await axios
-        .get("http://222.98.255.30:12344/exchange/getinfoall?date=2023-09-10")
+        .get("http://222.98.255.30:12344/resource/getinfoall?date=2023-09-20")
         .then((response) => {
           console.log(response.data);
           let save = [...response.data];
-          setData(save);
+          setresourceData(save);
         });
     } catch (error) {
       console.log(error);
       alert("Error");
     }
-  };
+  }
 
   useEffect(() => {
-    getfun();
+    getresourceData();
   }, []);
 
   // 출력
-  function showData() {
-    let x = [];
-    if (data.length > 0) {
-      return data.map((realdata) => (
-        <div key={realdata.date}>
-          {realdata.currency}
-          {realdata.currencyName}
-          {realdata.currencySymbol}
-          {realdata.exchangeRate}
+  function showResource() {
+    if (resourcedata.length > 0) {
+      return resourcedata.map((realdata2) => (
+        <div>
+          {realdata2.date}
+          {realdata2.engName}
+          {realdata2.price}
+          {realdata2.symbol}
+          {realdata2.unit}
         </div>
       ));
     }
   }
 
-  function xLine() {
-    let xxx = [];
-    if (data.length > 0) {
-      data.map((realdata) => xxx.push(realdata.date));
+  // 자재 테이블
+  function resourceTable() {
+    if (resourcedata.length > 0) {
+      return (
+        resourcedata &&
+        resourcedata.map((item) => (
+          <tr>
+            <td>{item.date}</td>
+            <td>{item.engName}</td>
+            <td>{item.korName}</td>
+            <td>{item.price}</td>
+            <td>{item.unit}</td>
+          </tr>
+        ))
+      );
     }
-    return xxx;
   }
 
-  function yLine() {
-    let yyy = [];
-    if (data.length > 0) {
-      data.map((realdata) => yyy.push(realdata.exchangeRate));
+  function rexData() {
+    let xline = [];
+    if (resourcedata.length > 0) {
+      resourcedata.map((realdata) => xline.push(realdata.date));
     }
-    console.log(yyy);
-    return yyy;
+    return xline;
   }
+
+  function reyData() {
+    let yline = [];
+    if (resourcedata.length > 0) {
+      resourcedata.map((realdata) => yline.push(realdata.price));
+    }
+    return yline;
+  }
+
+  // 원자재 이름 바꾸기 - 인덱스 순
+  // function changeTitle() {
+  //   let reTitle;
+  //   if (resourcedata.length > 0) {
+  //     resourcedata.map((realdata, index) => <div key={index}>{realdata.engName}</div> );
+  //   }
+  //   return reTitle;
+  // }
 
   return (
-    <div>
+    <>
       <Container fluid>
         {/* // 꺾은선그래프 */}
         <Row>
-          <Col md="12">
+          <Col md="6">
             <Card>
               <Card.Header>
                 <Card.Title as="h4">원자재 이름</Card.Title>
@@ -87,12 +113,40 @@ function MainPage() {
                 <div className="ct-chart" id="chartHours">
                   <ChartistGraph
                     data={{
-                      labels: xLine(),
-                      series: [yLine()],
+                      labels: rexData(),
+                      series: [
+                        [reyData()],
+                      ],
                     }}
                     type="Line"
-                    options={options}
-                    responsiveOptions={responsiveOptions}
+                    options={{
+                      low: 0,
+                      high: 800,
+                      showArea: false,
+                      height: "245px",
+                      axisX: {
+                        showGrid: false,
+                      },
+                      lineSmooth: true,
+                      showLine: true,
+                      showPoint: true,
+                      fullWidth: true,
+                      chartPadding: {
+                        right: 50,
+                      },
+                    }}
+                    responsiveOptions={[
+                      [
+                        "screen and (max-width: 640px)",
+                        {
+                          axisX: {
+                            labelInterpolationFnc: function (value) {
+                              return value[0];
+                            },
+                          },
+                        },
+                      ],
+                    ]}
                   />
                 </div>
               </Card.Body>
@@ -100,43 +154,13 @@ function MainPage() {
           </Col>
         </Row>
       </Container>
-      <div>{xLine()}</div>
-      {/* // 데이터 출력 */}
-      <div>{showData()}</div>
-    </div>
+      {/* // 자재 데이터 출력
+      <div>{showResource()}</div> */}
+      
+      {/* // 자재 테이블 출력 */}
+      <div>{resourceTable() }</div>
+    </>
   );
 }
 
-const options = [
-  {
-    low: 0,
-    high: 800,
-    showArea: false,
-    height: "245px",
-    axisX: {
-      showGrid: false,
-    },
-    lineSmooth: true,
-    showLine: true,
-    showPoint: true,
-    fullWidth: true,
-    chartPadding: {
-      right: 50,
-    },
-  },
-];
-
-const responsiveOptions = [
-  [
-    "screen and (max-width: 640px)",
-    {
-      axisX: {
-        labelInterpolationFnc: function (value) {
-          return value[0];
-        },
-      },
-    },
-  ],
-];
-
-export default MainPage;
+export default DetailPage;

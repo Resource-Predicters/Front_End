@@ -1,8 +1,12 @@
+// import ApexCharts from 'apexcharts'
+// import React from "react";
+// import ReactDOM from 'react-dom';
+
 // class ApexChart extends React.Component {
 //   constructor(props) {
 //     super(props);
 
-//     this.state = {
+//     var options = this.state = {
 
 //       series: [
 //         {
@@ -85,3 +89,5 @@
 
 // const domContainer = document.querySelector('#app');
 // ReactDOM.render(React.createElement(ApexChart), domContainer);
+
+// export default ApexChart;

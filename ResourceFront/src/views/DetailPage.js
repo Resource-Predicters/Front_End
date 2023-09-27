@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 import ChartistGraph from "react-chartist";
 // react-bootstrap components
 import {
@@ -18,56 +17,76 @@ import {
   Tooltip,
 } from "react-bootstrap";
 
-function DetailPage() {
-  const [resourcedata, setresourceData] = useState({ data: [] });
+function MainPage() {
+  const [data, setData] = useState({ data: [] });
+  const [xData, setXData] = useState();
 
   // data 가져오기
-  async function getresourceData() {
+  const getfun = async function getData() {
     try {
       const response = await axios
-        .get("http://222.98.255.30:12344/resource/getinfoall?date=2023-09-10")
+        .get("http://222.98.255.30:12344/exchange/getinfoall?date=2023-09-20")
         .then((response) => {
           console.log(response.data);
           let save = [...response.data];
-          setresourceData(save);
+          setData(save);
         });
     } catch (error) {
       console.log(error);
       alert("Error");
     }
-  }
+  };
 
   useEffect(() => {
-    getresourceData();
+    getfun();
   }, []);
 
   // 출력
-  function showResource() {
-    if (resourcedata.length > 0) {
-      return resourcedata.map((realdata2) => (
-        <div>
-          {realdata2.date}
-          {realdata2.engName}
-          {realdata2.price}
-          {realdata2.symbol}
-          {realdata2.unit}
+  function showData() {
+    let x = [];
+    if (data.length > 0) {
+      return data.map((realdata) => (
+        <div key={realdata.date}>
+          {realdata.currency}
+          {realdata.currencyName}
+          {realdata.currencySymbol}
+          {realdata.exchangeRate}
         </div>
       ));
     }
   }
 
-  // 자재 테이블
-  function resourceTable() {
-    if (resourcedata.length > 0) {
+  // x축 - 날짜
+  function xLine() {
+    let xxx = [];
+    if (data.length > 0) {
+      data.map((realdata) => xxx.push(realdata.date));
+    }
+    return xxx;
+  }
+
+  // y축 - 환율가격
+  function yLine() {
+    let yyy = [];
+    if (data.length > 0) {
+      data.map((realdata) => yyy.push(realdata.exchangeRate));
+    }
+    console.log(yyy);
+    return yyy;
+  }
+
+  // 환율 테이블
+  function exchangeTable() {
+    if (data.length > 0) {
       return (
-        resourcedata &&
-        resourcedata.map((item) => (
+        data &&
+        data.map((item) => (
           <tr>
             <td>{item.date}</td>
-            <td>{item.engName}</td>
-            <td>{item.korName}</td>
-            <td>{item.price}</td>
-            <td>{item.unit}</td>
+            <td>{item.exchangeRate}</td>
+            <td>{item.currencyName}</td>
+            <td>{item.currencySymbol}</td>
+            <td>{item.currency}</td>
           </tr>
         ))
       );
@@ -75,11 +94,11 @@ function DetailPage() {
   }
 
   return (
-    <>
+    <div>
       <Container fluid>
         {/* // 꺾은선그래프 */}
         <Row>
-          <Col md="6">
+          <Col md="12">
             <Card>
               <Card.Header>
                 <Card.Title as="h4">원자재 이름</Card.Title>
@@ -88,51 +107,12 @@ function DetailPage() {
                 <div className="ct-chart" id="chartHours">
                   <ChartistGraph
                     data={{
-                      labels: [
-                        "9:00AM",
-                        "12:00AM",
-                        "3:00PM",
-                        "6:00PM",
-                        "9:00PM",
-                        "12:00PM",
-                        "3:00AM",
-                        "6:00AM",
-                      ],
-                      series: [
-                        [287, 385, 490, 492, 554, 586, 698, 695],
-                        [67, 152, 143, 240, 287, 335, 435, 437],
-                        [23, 113, 67, 108, 190, 239, 307, 308],
-                      ],
+                      labels: xLine(),
+                      series: [yLine()],
                     }}
                     type="Line"
-                    options={{
-                      low: 0,
-                      high: 800,
-                      showArea: false,
-                      height: "245px",
-                      axisX: {
-                        showGrid: false,
-                      },
-                      lineSmooth: true,
-                      showLine: true,
-                      showPoint: true,
-                      fullWidth: true,
-                      chartPadding: {
-                        right: 50,
-                      },
-                    }}
-                    responsiveOptions={[
-                      [
-                        "screen and (max-width: 640px)",
-                        {
-                          axisX: {
-                            labelInterpolationFnc: function (value) {
-                              return value[0];
-                            },
-                          },
-                        },
-                      ],
-                    ]}
+                    options={options}
+                    responsiveOptions={responsiveOptions}
                   />
                 </div>
               </Card.Body>
@@ -156,7 +136,7 @@ function DetailPage() {
                       <th className="border-0">UNIT</th>
                     </tr>
                   </thead>
-                  <tbody>{resourceTable()}</tbody>
+                  <tbody>{exchangeTable()}</tbody>
                 </Table>
               </Card.Body>
             </Card>
@@ -192,10 +172,43 @@ function DetailPage() {
           </Col>
         </Row>
       </Container>
-      {/* // 데이터 출력 */}
-      //<div>{showResource()}</div>
-    </>
+      <div>{xLine()}</div>
+      {/* // 데이터 출력
+      <div>{showData()}</div> */}
+    </div>
   );
 }
 
-export default DetailPage;
+const options = [
+  {
+    low: 0,
+    high: 800,
+    showArea: false,
+    height: "245px",
+    axisX: {
+      showGrid: false,
+    },
+    lineSmooth: true,
+    showLine: true,
+    showPoint: true,
+    fullWidth: true,
+    chartPadding: {
+      right: 50,
+    },
+  },
+];
+
+const responsiveOptions = [
+  [
+    "screen and (max-width: 640px)",
+    {
+      axisX: {
+        labelInterpolationFnc: function (value) {
+          return value[0];
+        },
+      },
+    },
+  ],
+];
+
+export default MainPage;
