@@ -25,7 +25,7 @@ function DetailPage() {
   async function getresourceData() {
     try {
       const response = await axios
-        .get("http://222.98.255.30:12344/resource/getinfoall?date=2023-09-20")
+        .get("http://222.98.255.30:12344/resource/getinfo?date=2023-09-20")
         .then((response) => {
           console.log(response.data);
           let save = [...response.data];

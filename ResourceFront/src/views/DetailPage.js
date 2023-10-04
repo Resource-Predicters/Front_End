@@ -25,7 +25,7 @@ function MainPage() {
   const getfun = async function getData() {
     try {
       const response = await axios
-        .get("http://222.98.255.30:12344/exchange/getinfoall?date=2023-09-20")
+        .get("http://222.98.255.30:12344/exchange/getinfo?date=2023-09-20")
         .then((response) => {
           console.log(response.data);
           let save = [...response.data];
@@ -172,7 +172,6 @@ function MainPage() {
           </Col>
         </Row>
       </Container>
-      <div>{xLine()}</div>
       {/* // 데이터 출력
       <div>{showData()}</div> */}
     </div>
