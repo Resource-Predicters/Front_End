@@ -17,7 +17,7 @@ import {
   Tooltip,
 } from "react-bootstrap";
 
-function MainPage() {
+function DetailPage() {
   const [data, setData] = useState({ data: [] });
   const [xData, setXData] = useState();
 
@@ -210,4 +210,4 @@ const responsiveOptions = [
   ],
 ];
 
-export default MainPage;
+export default DetailPage;

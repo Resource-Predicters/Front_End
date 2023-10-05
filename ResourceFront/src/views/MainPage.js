@@ -18,14 +18,15 @@ import {
   Tooltip,
 } from "react-bootstrap";
 
-function DetailPage() {
+function MainPage() {
   const [resourcedata, setresourceData] = useState({ data: [] });
+
 
   // data 가져오기
   async function getresourceData() {
     try {
       const response = await axios
-        .get("http://222.98.255.30:12344/resource/getinfo?date=2023-09-20")
+        .get("http://222.98.255.30:12344/resource/getinfo?date=2023-09-01")
         .then((response) => {
           console.log(response.data);
           let save = [...response.data];
@@ -55,7 +56,7 @@ function DetailPage() {
       ));
     }
   }
-
+  
   // 자재 테이블
   function resourceTable() {
     if (resourcedata.length > 0) {
@@ -67,6 +68,7 @@ function DetailPage() {
             <td>{item.engName}</td>
             <td>{item.korName}</td>
             <td>{item.price}</td>
+            <td>{item.symbol}</td>
             <td>{item.unit}</td>
           </tr>
         ))
@@ -77,7 +79,7 @@ function DetailPage() {
   function rexData() {
     let xline = [];
     if (resourcedata.length > 0) {
-      resourcedata.map((realdata) => xline.push(realdata.date));
+      resourcedata.map((realdata) => xline.push(realdata.date, 'YY-MM-DD'));
     }
     return xline;
   }
@@ -90,21 +92,73 @@ function DetailPage() {
     return yline;
   }
 
-  // 원자재 이름 바꾸기 - 인덱스 순
-  // function changeTitle() {
-  //   let reTitle;
-  //   if (resourcedata.length > 0) {
-  //     resourcedata.map((realdata, index) => <div key={index}>{realdata.engName}</div> );
-  //   }
-  //   return reTitle;
-  // }
+  function chartTest() {
+    let price = [[],[],[],[]];
+    let symbols = [[],[],[],[]];
+    let date = [[],[],[],[]];
+    let all = []
+    let index = 0;
+    
+    if (resourcedata.length > 0) {
+      let symbol = resourcedata[0].symbol;
+      symbols[index].push(symbol)
+      resourcedata.map((item) => {
+        if(symbol == item.symbol)
+        {
+          price[index].push(item.price)
+          date[index].push(item.date)
+        }
+        else
+        {
+          all.push({price : price[index], symbols: symbols[index], date: date[index]});
+          index = index + 1;          
+          symbols[index].push(item.symbol)
+          price[index].push(item.price)
+          date[index].push(item.date)
+          console.log(index);
+          console.log(all);
+        }
+        symbol = item.symbol        
+      });
+      all.push({price : price[index], symbols: symbols[index], date: date[index]});
+      return(all.map((item) => {
+        return(
+        <Container fluid>
+          <Row>
+            <Col md="12">
+              <Card>
+                <Card.Header>
+                  <Card.Title as="h4">{item.symbols}</Card.Title>
+                </Card.Header>
+                <Card.Body>
+                  <div className="ct-chart" id="chartHours">
+                    <ChartistGraph
+                      data={{
+                        labels: item.date,
+                        series: 
+                          [item.price],
+                      }}
+                      type="Line"
+                      options={options}
+                      responsiveOptions={responsiveOptions}
+                    />
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>)
+      }))
+    } 
+  }
+
 
   return (
     <>
       <Container fluid>
         {/* // 꺾은선그래프 */}
         <Row>
-          <Col md="6">
+          <Col md="12">
             <Card>
               <Card.Header>
                 <Card.Title as="h4">원자재 이름</Card.Title>
@@ -119,34 +173,8 @@ function DetailPage() {
                       ],
                     }}
                     type="Line"
-                    options={{
-                      low: 0,
-                      high: 800,
-                      showArea: false,
-                      height: "245px",
-                      axisX: {
-                        showGrid: false,
-                      },
-                      lineSmooth: true,
-                      showLine: true,
-                      showPoint: true,
-                      fullWidth: true,
-                      chartPadding: {
-                        right: 50,
-                      },
-                    }}
-                    responsiveOptions={[
-                      [
-                        "screen and (max-width: 640px)",
-                        {
-                          axisX: {
-                            labelInterpolationFnc: function (value) {
-                              return value[0];
-                            },
-                          },
-                        },
-                      ],
-                    ]}
+                    options={options}
+                    responsiveOptions={responsiveOptions}
                   />
                 </div>
               </Card.Body>
@@ -154,13 +182,43 @@ function DetailPage() {
           </Col>
         </Row>
       </Container>
-      {/* // 자재 데이터 출력
-      <div>{showResource()}</div> */}
-      
-      {/* // 자재 테이블 출력 */}
-      <div>{resourceTable() }</div>
+
+      <div>{chartTest()}</div>
     </>
   );
 }
 
-export default DetailPage;
+const options = [
+  {
+    low: 0,
+    high: 800,
+    showArea: false,
+    height: "245px",
+    axisX: {
+      showGrid: false,
+    },
+    lineSmooth: true,
+    showLine: true,
+    showPoint: true,
+    fullWidth: true,
+    chartPadding: {
+      right: 50,
+    },
+  },
+];
+
+const responsiveOptions = [
+  [
+    "screen and (max-width: 640px)",
+    {
+      axisX: {
+        labelInterpolationFnc: function (value) {
+          return value[0];
+        },
+      },
+    },
+  ],
+];
+
+
+export default MainPage;

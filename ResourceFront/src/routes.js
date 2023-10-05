@@ -81,13 +81,13 @@ const dashboardRoutes = [
     component: SignupPage,
     layout: "/admin"
   },
-  {
-    path: "/user",
-    name: "User Profile",
-    icon: "nc-icon nc-circle-09",
-    component: UserProfile,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/user",
+  //   name: "User Profile",
+  //   icon: "nc-icon nc-circle-09",
+  //   component: UserProfile,
+  //   layout: "/admin"
+  // },
   // {
   //   path: "/table",
   //   name: "Table List",
