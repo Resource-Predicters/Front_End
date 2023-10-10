@@ -678,7 +678,7 @@
   padding: 2px 5px 2px 4px;
   color: #333;
   text-decoration: none;
-  white-space: pre-wrap;
+  white-space: nowrap;
   cursor: pointer;
   border-radius: 3px;
 }

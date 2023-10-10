@@ -76,6 +76,7 @@ function MainPage() {
     }
   }
 
+  // 메인차트 x축
   function rexData() {
     let xline = [];
     if (resourcedata.length > 0) {
@@ -84,6 +85,7 @@ function MainPage() {
     return xline;
   }
 
+  // 메인차트 y축
   function reyData() {
     let yline = [];
     if (resourcedata.length > 0) {
@@ -92,6 +94,7 @@ function MainPage() {
     return yline;
   }
 
+  // 원자재 차트 반복
   function chartTest() {
     let price = [[],[],[],[]];
     let symbols = [[],[],[],[]];
@@ -123,8 +126,6 @@ function MainPage() {
       all.push({price : price[index], symbols: symbols[index], date: date[index]});
       return(all.map((item) => {
         return(
-        <Container fluid>
-          <Row>
             <Col md="12">
               <Card>
                 <Card.Header>
@@ -146,8 +147,7 @@ function MainPage() {
                 </Card.Body>
               </Card>
             </Col>
-          </Row>
-        </Container>)
+            )
       }))
     } 
   }
@@ -155,35 +155,9 @@ function MainPage() {
 
   return (
     <>
-      <Container fluid>
-        {/* // 꺾은선그래프 */}
-        <Row>
-          <Col md="12">
-            <Card>
-              <Card.Header>
-                <Card.Title as="h4">원자재 이름</Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <div className="ct-chart" id="chartHours">
-                  <ChartistGraph
-                    data={{
-                      labels: rexData(),
-                      series: [
-                        [reyData()],
-                      ],
-                    }}
-                    type="Line"
-                    options={options}
-                    responsiveOptions={responsiveOptions}
-                  />
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+      
 
-      <div>{chartTest()}</div>
+    <div>{chartTest()}</div>
     </>
   );
 }

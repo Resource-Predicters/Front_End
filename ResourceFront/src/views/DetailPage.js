@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ChartistGraph from "react-chartist";
+import Dropbuttons from "./DropButtons";
+import GetIssueTable from "./GetIssueTable";
 // react-bootstrap components
 import {
   Badge,
@@ -21,11 +23,11 @@ function DetailPage() {
   const [data, setData] = useState({ data: [] });
   const [xData, setXData] = useState();
 
-  // data 가져오기
-  const getfun = async function getData() {
+  // 환율 data 가져오기
+  const getExchange = async function getData() {
     try {
       const response = await axios
-        .get("http://222.98.255.30:12344/exchange/getinfo?date=2023-09-20")
+        .get("http://222.98.255.30:12344/exchange/getinfo?date=2023-09-01")
         .then((response) => {
           console.log(response.data);
           let save = [...response.data];
@@ -38,7 +40,7 @@ function DetailPage() {
   };
 
   useEffect(() => {
-    getfun();
+    getExchange();
   }, []);
 
   // 출력
@@ -96,7 +98,8 @@ function DetailPage() {
   return (
     <div>
       <Container fluid>
-        {/* // 꺾은선그래프 */}
+      {Dropbuttons()}
+        <p></p>
         <Row>
           <Col md="12">
             <Card>
@@ -117,6 +120,7 @@ function DetailPage() {
                 </div>
               </Card.Body>
             </Card>
+          <p/>
           </Col>
         </Row>
         <Row>
@@ -142,35 +146,7 @@ function DetailPage() {
             </Card>
           </Col>
         </Row>
-        <Row>
-          <Col md="6">
-            <Card className="card-plain table-plain-bg">
-              <Card.Header>
-                <Card.Title as="h4">관련 뉴스</Card.Title>
-              </Card.Header>
-              <Card.Body className="table-full-width table-responsive px-0">
-                <Table className="table-hover">
-                  <thead>
-                    <tr>
-                      <th className="border-0">DATE</th>
-                      <th className="border-0">HEADLINE</th>
-                      <th className="border-0">PUBLISHER</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Dakota Rice</td>
-                      <td>$36,738</td>
-                      <td>Niger</td>
-                      <td>Oud-Turnhout</td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+        {GetIssueTable()}
       </Container>
       {/* // 데이터 출력
       <div>{showData()}</div> */}
