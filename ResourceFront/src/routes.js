@@ -24,11 +24,11 @@ import Maps from "views/Maps.js";
 import Notifications from "views/Notifications.js";
 import Upgrade from "views/Upgrade.js";
 import { SignatureKind } from "typescript";
-import MainPage from "views/MainPage";
-import DetailPage from "views/DetailPage";
-import AiPage from "views/AiPage";
-import SigninPage from "views/SigninPage";
-import SignupPage from "views/SignupPage";
+import MainPage from "pages/MainPage";
+import DetailPage from "pages/DetailPage";
+import AiPage from "pages/AiPage";
+import SigninPage from "pages/SigninPage";
+import SignupPage from "pages/SignupPage";
 
 const dashboardRoutes = [
   // {
@@ -39,14 +39,15 @@ const dashboardRoutes = [
   //   component: Upgrade,
   //   layout: "/admin"
   // },
+  // {
+  //   path: "/dashboard",
+  //   name: "Dashborad",
+  //   icon: "nc-icon nc-chart-pie-35",
+  //   component: Dashboard,
+  //   layout: "/admin"
+  // },
   {
-    path: "/dashboard",
-    name: "Dashborad",
-    icon: "nc-icon nc-chart-pie-35",
-    component: Dashboard,
-    layout: "/admin"
-  },
-  {
+    // 메인페이지 - 4개의 원자재 차트를 보여줌
     path: "/main",
     name: "Main",
     icon: "nc-icon nc-grid-45",
@@ -54,6 +55,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
+    // 상세페이지 - 각 원자재의 차트, 실구매가 테이블, 뉴스테이블를 보여줌
     path: "/detail",
     name: "Detail",
     icon: "nc-icon nc-chart-pie-35",
@@ -61,13 +63,15 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
-    path: "/ai",
+    // ai 구매예측가격을 차트로 보여줌
+    path: "/pages/ai",
     name: "Ai",
     icon: "nc-icon nc-spaceship",
     component: AiPage,
     layout: "/admin"
   },
   {
+    // 로그인
     path: "/signin",
     name: "Signin",
     icon: "nc-icon nc-single-02",
@@ -75,6 +79,7 @@ const dashboardRoutes = [
     layout: "/admin"
   },
   {
+    // 로그아웃
     path: "/signup",
     name: "Signup",
     icon: "nc-icon nc-circle-09",

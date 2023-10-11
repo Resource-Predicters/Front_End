@@ -44,19 +44,19 @@ function DetailPage() {
   }, []);
 
   // 출력
-  function showData() {
-    let x = [];
-    if (data.length > 0) {
-      return data.map((realdata) => (
-        <div key={realdata.date}>
-          {realdata.currency}
-          {realdata.currencyName}
-          {realdata.currencySymbol}
-          {realdata.exchangeRate}
-        </div>
-      ));
-    }
-  }
+  // function showData() {
+  //   let x = [];
+  //   if (data.length > 0) {
+  //     return data.map((realdata) => (
+  //       <div key={realdata.date}>
+  //         {realdata.currency}
+  //         {realdata.currencyName}
+  //         {realdata.currencySymbol}
+  //         {realdata.exchangeRate}
+  //       </div>
+  //     ));
+  //   }
+  // }
 
   // x축 - 날짜
   function xLine() {
@@ -134,10 +134,10 @@ function DetailPage() {
                   <thead>
                     <tr>
                       <th className="border-0">DATE</th>
-                      <th className="border-0">ENGNAME</th>
-                      <th className="border-0">KORNAME</th>
                       <th className="border-0">PRICE</th>
-                      <th className="border-0">UNIT</th>
+                      <th className="border-0">CURRENCYNAME</th>
+                      <th className="border-0">SYMBOL</th>
+                      <th className="border-0">CURRENCY</th>
                     </tr>
                   </thead>
                   <tbody>{exchangeTable()}</tbody>

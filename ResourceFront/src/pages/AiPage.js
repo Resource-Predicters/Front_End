@@ -1,5 +1,7 @@
 import React from "react";
 import ChartistGraph from "react-chartist";
+import LineChart from "views/LineChart";
+
 // react-bootstrap components
 import {
   Badge,
@@ -20,7 +22,6 @@ function AiPage() {
   return (
     <>
       <Container fluid>
-        {/* // 꺾은선그래프 */}
         <Row>
           <Col md="6">
             <Card>
