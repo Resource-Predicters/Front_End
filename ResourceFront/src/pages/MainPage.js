@@ -22,7 +22,7 @@ function MainPage() {
   const [resourcedata, setresourceData] = useState({ data: [] });
 
 
-  // data 가져오기
+  // 원자재 데이터 가져오기
   async function getresourceData() {
     try {
       const response = await axios
@@ -155,8 +155,6 @@ function MainPage() {
 
   return (
     <>
-      
-
     <div>{chartTest()}</div>
     </>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import ChartistGraph from "react-chartist";
-import LineChart from "views/LineChart";
 
 // react-bootstrap components
 import {
