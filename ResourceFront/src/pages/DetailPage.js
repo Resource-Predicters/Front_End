@@ -29,7 +29,7 @@ function DetailPage() {
       const response = await axios
         .get("http://222.98.255.30:12344/exchange/getinfo?date=2023-09-01")
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           let save = [...response.data];
           setData(save);
         });
@@ -73,7 +73,7 @@ function DetailPage() {
     if (data.length > 0) {
       data.map((realdata) => yyy.push(realdata.exchangeRate));
     }
-    console.log(yyy);
+    // console.log(yyy);
     return yyy;
   }
 
