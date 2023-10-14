@@ -123,7 +123,6 @@ function DetailPage() {
             <p />
           </Col>
         </Row>
-        <Row>
         {/* <Row>
           <Col md="6">
             <Card className="strpied-tabled-with-hover">
