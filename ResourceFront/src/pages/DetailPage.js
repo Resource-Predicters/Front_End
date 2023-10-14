@@ -98,7 +98,7 @@ function DetailPage() {
   return (
     <div>
       <Container fluid>
-      {Dropbuttons()}
+        {Dropbuttons()}
         <p></p>
         <Row>
           <Col md="12">
@@ -120,10 +120,11 @@ function DetailPage() {
                 </div>
               </Card.Body>
             </Card>
-          <p/>
+            <p />
           </Col>
         </Row>
         <Row>
+        {/* <Row>
           <Col md="6">
             <Card className="strpied-tabled-with-hover">
               <Card.Header>
@@ -145,11 +146,9 @@ function DetailPage() {
               </Card.Body>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
         {GetIssueTable()}
       </Container>
-      {/* // 데이터 출력
-      <div>{showData()}</div> */}
     </div>
   );
 }

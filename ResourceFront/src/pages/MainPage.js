@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
+import ApexCharts from "apexcharts";
+
 import { useState, useEffect } from "react";
 import ChartistGraph from "react-chartist";
+import LineChart from "pages/LineChart";
+
 // react-bootstrap components
 import {
   Badge,
@@ -19,8 +23,7 @@ import {
 } from "react-bootstrap";
 
 function MainPage() {
-  const [resourcedata, setresourceData] = useState({ data: [] });
-
+  const [resourcedata, setresourceData] = useState();
 
   // 원자재 데이터 가져오기
   async function getresourceData() {
@@ -28,7 +31,7 @@ function MainPage() {
       const response = await axios
         .get("http://222.98.255.30:12344/resource/getinfo?date=2023-09-01")
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           let save = [...response.data];
           setresourceData(save);
         });
@@ -56,7 +59,7 @@ function MainPage() {
       ));
     }
   }
-  
+
   // 자재 테이블
   function resourceTable() {
     if (resourcedata.length > 0) {
@@ -80,7 +83,7 @@ function MainPage() {
   function rexData() {
     let xline = [];
     if (resourcedata.length > 0) {
-      resourcedata.map((realdata) => xline.push(realdata.date, 'YY-MM-DD'));
+      resourcedata.map((realdata) => xline.push(realdata.date, "YY-MM-DD"));
     }
     return xline;
   }
@@ -96,66 +99,69 @@ function MainPage() {
 
   // 원자재 차트 반복
   function chartTest() {
-    let price = [[],[],[],[]];
-    let symbols = [[],[],[],[]];
-    let date = [[],[],[],[]];
-    let all = []
+    let price = [[], [], [], []];
+    let symbols = [[], [], [], []];
+    let date = [[], [], [], []];
+    let all = [];
     let index = 0;
-    
+
     if (resourcedata.length > 0) {
       let symbol = resourcedata[0].symbol;
-      symbols[index].push(symbol)
+      symbols[index].push(symbol);
       resourcedata.map((item) => {
-        if(symbol == item.symbol)
-        {
-          price[index].push(item.price)
-          date[index].push(item.date)
-        }
-        else
-        {
-          all.push({price : price[index], symbols: symbols[index], date: date[index]});
-          index = index + 1;          
-          symbols[index].push(item.symbol)
-          price[index].push(item.price)
-          date[index].push(item.date)
+        if (symbol == item.symbol) {
+          price[index].push(item.price);
+          date[index].push(item.date);
+        } else {
+          all.push({
+            price: price[index],
+            symbols: symbols[index],
+            date: date[index],
+          });
+          index = index + 1;
+          symbols[index].push(item.symbol);
+          price[index].push(item.price);
+          date[index].push(item.date);
           console.log(index);
           console.log(all);
         }
-        symbol = item.symbol        
+        symbol = item.symbol;
       });
-      all.push({price : price[index], symbols: symbols[index], date: date[index]});
-      return(all.map((item) => {
-        return(
-            <Col md="12">
-              <Card>
-                <Card.Header>
-                  <Card.Title as="h4">{item.symbols}</Card.Title>
-                </Card.Header>
-                <Card.Body>
-                  <div className="ct-chart" id="chartHours">
-                    <ChartistGraph
-                      data={{
-                        labels: item.date,
-                        series: 
-                          [item.price],
-                      }}
-                      type="Line"
-                      options={options}
-                      responsiveOptions={responsiveOptions}
-                    />
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-            )
-      }))
-    } 
+      all.push({
+        price: price[index],
+        symbols: symbols[index],
+        date: date[index],
+      });
+      return all.map((item) => {
+        return (
+          <Col md="12">
+            <Card>
+              <Card.Header>
+                <Card.Title as="h4">{item.symbols}</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <div className="ct-chart" id="chartHours">
+                  <ChartistGraph
+                    data={{
+                      labels: item.date,
+                      series: [item.price],
+                    }}
+                    type="Line"
+                    options={options}
+                    responsiveOptions={responsiveOptions}
+                  />
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        );
+      });
+    }
   }
-
 
   return (
     <>
-    <div>{chartTest()}</div>
+      <div>{/* {chartTest()} */}</div>
     </>
   );
 }
@@ -191,6 +197,5 @@ const responsiveOptions = [
     },
   ],
 ];
-
 
 export default MainPage;

@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Light Bootstrap Dashboard React - v2.0.1
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import Dashboard from "views/Dashboard.js";
 import UserProfile from "views/UserProfile.js";
 import TableList from "views/TableList.js";
@@ -52,7 +35,7 @@ const dashboardRoutes = [
     name: "Main",
     icon: "nc-icon nc-grid-45",
     component: MainPage,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     // 상세페이지 - 각 원자재의 차트, 실구매가 테이블, 뉴스테이블를 보여줌
@@ -60,7 +43,7 @@ const dashboardRoutes = [
     name: "Detail",
     icon: "nc-icon nc-chart-pie-35",
     component: DetailPage,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     // ai 구매예측가격을 차트로 보여줌
@@ -68,7 +51,7 @@ const dashboardRoutes = [
     name: "Ai",
     icon: "nc-icon nc-spaceship",
     component: AiPage,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     // 로그인
@@ -76,7 +59,7 @@ const dashboardRoutes = [
     name: "Signin",
     icon: "nc-icon nc-single-02",
     component: SigninPage,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     // 로그아웃
@@ -84,7 +67,7 @@ const dashboardRoutes = [
     name: "Signup",
     icon: "nc-icon nc-circle-09",
     component: SignupPage,
-    layout: "/admin"
+    layout: "/admin",
   },
   // {
   //   path: "/user",
