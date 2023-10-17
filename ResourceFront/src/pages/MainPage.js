@@ -46,19 +46,19 @@ function MainPage() {
   }, []);
 
   // 출력
-  function showResource() {
-    if (resourcedata.length > 0) {
-      return resourcedata.map((realdata2) => (
-        <div>
-          {realdata2.date}
-          {realdata2.engName}
-          {realdata2.price}
-          {realdata2.symbol}
-          {realdata2.unit}
-        </div>
-      ));
-    }
-  }
+  // function showResource() {
+  //   if (resourcedata.length > 0) {
+  //     return resourcedata.map((realdata2) => (
+  //       <div>
+  //         {realdata2.date}
+  //         {realdata2.engName}
+  //         {realdata2.price}
+  //         {realdata2.symbol}
+  //         {realdata2.unit}
+  //       </div>
+  //     ));
+  //   }
+  // }
 
   // 자재 테이블
   function resourceTable() {
@@ -97,7 +97,7 @@ function MainPage() {
     return yline;
   }
 
-  // 원자재 차트 반복
+  // 각 원자재 차트 반복
   function chartTest() {
     let price = [[], [], [], []];
     let symbols = [[], [], [], []];
@@ -166,6 +166,7 @@ function MainPage() {
   );
 }
 
+// 차트 옵션1
 const options = [
   {
     low: 0,
@@ -185,6 +186,7 @@ const options = [
   },
 ];
 
+// 차트 옵션2
 const responsiveOptions = [
   [
     "screen and (max-width: 640px)",
