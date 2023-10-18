@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { ReactDOM } from "react";
 import ReactApexChart from "react-apexcharts";
 import Card from 'react-bootstrap/Card';
-
+import Button from 'react-bootstrap/Button';
 
 // 자재 이름 + 환률이름
 // 가격
@@ -10,7 +10,6 @@ import Card from 'react-bootstrap/Card';
 class ApexChart extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
 
     this.state = {
       series: [
@@ -84,6 +83,9 @@ class ApexChart extends React.Component {
     );
   }
 }
+
+
+
 
 //   const domContainer = document.querySelector('#app');
 //   ReactDOM.render(React.createElement(ApexChart), domContainer);

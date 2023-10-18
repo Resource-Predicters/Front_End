@@ -18,6 +18,11 @@ root.render(
     <Switch>
       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
       <Redirect from="/" to="/admin/main" />
+      <Route path="/main"/>
+      <Route path="/detail"/>
+      <Route path="/ai"/>
+      <Route path="/signin"/>
+      <Route path="/signup"/>
     </Switch>
   </BrowserRouter>
 );
