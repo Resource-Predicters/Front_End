@@ -1,5 +1,5 @@
 import React from "react";
-import ChartistGraph from "react-chartist";
+// import ChartistGraph from "react-chartist";
 
 // react-bootstrap components
 import {
@@ -29,7 +29,7 @@ function AiPage() {
               </Card.Header>
               <Card.Body>
                 <div className="ct-chart" id="chartHours">
-                  <ChartistGraph
+                  {/* <ChartistGraph
                     data={{
                       labels: [
                         "9:00AM",
@@ -76,7 +76,7 @@ function AiPage() {
                         },
                       ],
                     ]}
-                  />
+                  /> */}
                 </div>
               </Card.Body>
             </Card>

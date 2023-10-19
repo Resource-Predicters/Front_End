@@ -93,7 +93,6 @@ function SignupPage() {
               <Card.Body>
                 {/* <Form> */}
                   <Row>
-                    
                     <Col className="pr-1" md="8">
                       <Form.Group>
                         <label htmlFor="name">Name</label>

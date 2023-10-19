@@ -39,7 +39,7 @@ const dashboardRoutes = [
   },
   {
     // 상세페이지 - 각 원자재의 차트, 실구매가 테이블, 뉴스테이블를 보여줌
-    path: "/detail/:id",
+    path: "/detail",
     name: "Detail",
     icon: "nc-icon nc-chart-pie-35",
     component: DetailPage,
@@ -47,7 +47,7 @@ const dashboardRoutes = [
   },
   {
     // ai 구매예측가격을 차트로 보여줌
-    path: "/ai",
+    path: "/pages/ai",
     name: "Ai",
     icon: "nc-icon nc-spaceship",
     component: AiPage,

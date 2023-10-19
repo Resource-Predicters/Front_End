@@ -5,20 +5,23 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@fortawesome/fontawesome-free": "5.15.2",
     "@reduxjs/toolkit": "^1.9.7",
-    "@types/node": "^20.8.6",
     "apexcharts": "^3.43.0",
     "axios": "^1.5.0",
     "bootstrap": "^4.6.0",
+    "chartist": "0.11.4",
+    "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.9",
-    "prop-types": "^15.8.1",
     "react": ">=16.8.0",
     "react-apexcharts": "^1.4.1",
     "react-bootstrap": "^2.4.0",
-    "react-datepicker": "^4.21.0",
+    "react-chartist": "0.14.4",
+    "react-dom": ">=16.8.0",
+    "react-notification-alert": "0.0.13",
     "react-redux": "^8.1.3",
     "react-router": "5.2.0",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "5.2.0",
     "react-scripts": "5.0.1",
+    "reactstrap": "8.8.1",
     "sass": "1.53.0"
   },
   "optionalDependencies": {
@@ -52,12 +55,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-transform-private-property-in-object": "^7.22.11",
-    "gulp": "^4.0.2"
-  },
-  "description": "![version](https://img.shields.io/badge/version-2.0.1-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/light-bootstrap-dashboard-react.svg?maxAge=2592000)]() [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/light-bootstrap-dashboard-react.svg?maxAge=2592000)]() [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)",
-  "main": "gulpfile.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "@babel/plugin-transform-private-property-in-object": "^7.22.11"
+  }
 }
