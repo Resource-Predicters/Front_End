@@ -25,7 +25,7 @@ function LineChart() {
   function rexData() {
     let xline = [];
     if (resourcedata.length > 0) {
-      resourcedata.map((realdata) => xline.push(realdata.date, "YY-MM-DD"));
+      resourcedata.map((realdata) => xline.push(realdata.date));
     }
     return xline;
   }

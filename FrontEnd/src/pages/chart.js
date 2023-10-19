@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { ReactDOM } from "react";
 import ReactApexChart from "react-apexcharts";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 // 자재 이름 + 환률이름
 // 가격
@@ -20,7 +20,7 @@ class ApexChart extends React.Component {
       ],
       options: {
         chart: {
-          height: 350,
+          height: 300,
           type: "line",
           zoom: {
             type: "x",
@@ -41,10 +41,10 @@ class ApexChart extends React.Component {
           text: props.korName + " " + props.unit,
           align: "center",
           style: {
-            fontSize:  '20px',
-            fontWeight:  'bold',
-            fontFamily:  undefined,
-            color:  props.color
+            fontSize: "20px",
+            fontWeight: "bold",
+            fontFamily: undefined,
+            color: props.color,
           },
         },
         grid: {
@@ -70,7 +70,6 @@ class ApexChart extends React.Component {
 
   render() {
     return (
-
       <div id="chart">
         <ReactApexChart
           options={this.state.options}
@@ -83,9 +82,6 @@ class ApexChart extends React.Component {
     );
   }
 }
-
-
-
 
 //   const domContainer = document.querySelector('#app');
 //   ReactDOM.render(React.createElement(ApexChart), domContainer);

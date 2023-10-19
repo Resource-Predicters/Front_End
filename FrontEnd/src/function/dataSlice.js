@@ -1,4 +1,4 @@
-const dataSlice = function (Data) {
+const ResourceSlice = function (Data) {
   if (Data == undefined) {
     return;
   } else {
@@ -38,4 +38,52 @@ const dataSlice = function (Data) {
   }
 };
 
-export default dataSlice;
+const IssueSlice = function (Data) {
+  if (Data == undefined) {
+    return;
+  } else {
+    let index = 0;
+    let resourceSymbol = Data[index].resourceSymbol;
+    let issueDate = [[Data[index].issueDate]];
+    let publisher = [[Data[index].publisher]];
+    let resourceEngName = [[Data[index].resourceEngName]];
+    let resourceKorName = [[Data[index].resourceKorName]];
+    let resourceSymbols = [[Data[index].resourceSymbol]];
+    let title = [[Data[index].title]];
+    let url = [[Data[index].url]];
+
+    Data.map((item) => {
+      // console.log(item);
+      if (resourceSymbol == item.resourceSymbol) {
+        issueDate[index].push(item.issueDate);
+        publisher[index].push(item.publisher);
+        title[index].push(item.title);
+        url[index].push(item.url);
+      } else {
+        index++;
+        resourceSymbol = item.resourceSymbol;
+        resourceEngName.push([item.resourceEngName]);
+        resourceKorName.push([item.resourceKorName]);
+        resourceSymbols.push([item.resourceSymbol]);
+        issueDate.push([item.issueDate]);
+        publisher.push([item.publisher]);
+        title.push([item.title]);
+        url.push([item.url]);
+      }
+    });
+
+    let result = {
+      resourceSymbols: resourceSymbols.flat(),
+      resourceEngName: resourceEngName,
+      resourceKorName: resourceKorName,
+      issueDate: issueDate,
+      publisher: publisher,
+      title: title,
+      url: url,
+    };
+    console.log(result);
+    return result;
+  }
+};
+
+export { ResourceSlice, IssueSlice };

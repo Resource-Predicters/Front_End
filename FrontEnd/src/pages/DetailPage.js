@@ -1,35 +1,24 @@
 import React, { useEffect, useState } from "react";
-import {infoData, tbData} from "../axios/infoAxios";
+import { ResourceInfoData, tbData, IssueInfoData } from "../axios/infoAxios";
 import App from "./chart";
-import { useParams } from 'react-router-dom'
+import { useParams } from "react-router-dom";
 
 // import ChartistGraph from "react-chartist";
-import Dropbuttons from "./DropButtons";
-import GetIssueTable from "./GetIssueTable";
+import ResourceDropdown from "./DropButtons";
+import issueTable from "./GetIssueTable";
 // react-bootstrap components
-import {
-  Badge,
-  Button,
-  Card,
-  Navbar,
-  Nav,
-  Table,
-  Container,
-  Row,
-  Col,
-  Form,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
+import { Card, Table, Container, Row, Col } from "react-bootstrap";
 
 function DetailPage() {
-
   let [resourceData, setResourceData] = useState();
   let [resources, setResources] = useState();
-  let {id} = useParams();
+  let [issueDate, setIssueDate] = useState();
+
+  let { id } = useParams();
 
   useEffect(() => {
-    infoData("resource", "getinfo?date=2023-09-01", setResourceData);
+    ResourceInfoData("resource", "getinfo?date=2023-09-01", setResourceData);
+    IssueInfoData("issue", "getinfo?date=2023-09-01", setIssueDate);
     tbData("resource", "gettball", setResources);
   }, []);
 
@@ -111,95 +100,72 @@ function DetailPage() {
   return (
     <div>
       <Container fluid>
-        {resources && Dropbuttons(resources)}
+        {resources && ResourceDropdown(resources)}
         <p></p>
-        <Row>
-          <Col md="12">
-            <Card>
-              <Card.Body>
-                {/* <div className="ct-chart" id="chartHours"> */}
+        <Card>
+          {resourceData &&
+            resourceData["symbols"].map((item, i) => {
+              if (item == id) {
+                return (
+                  <App
+                    variant="outline-primary"
+                    korName={resourceData["korName"][i]}
+                    price={resourceData["price"][i]}
+                    date={resourceData["date"][i]}
+                    engName={resourceData["engName"][i]}
+                    symbols={resourceData["symbols"][i]}
+                    unit={resourceData["unit"][i]}
+                    color="#A9A9A9"
+                  ></App>
+                );
+              }
+            })}
+          {/* </div> */}
+        </Card>
+        <p />
 
-                  
-                {resourceData &&
-    resourceData["symbols"].map((item, i) => {
-      if(item == id){return (
-        <App variant="outline-primary"
-          korName={resourceData["korName"][i]}
-          price={resourceData["price"][i]}
-          date={resourceData["date"][i]}
-          engName={resourceData["engName"][i]}
-          symbols={resourceData["symbols"][i]}
-          unit={resourceData["unit"][i]}
-          color="#A9A9A9"
-        ></App>
-      );}
-      
-    })}
-                {/* </div> */}
-              </Card.Body>
-            </Card>
-            <p />
-          </Col>
-        </Row>
-        {/* <Row>
-          <Col md="6">
-            <Card className="strpied-tabled-with-hover">
-              <Card.Header>
-                <Card.Title as="h4">원자재 실구매가</Card.Title>
-              </Card.Header>
-              <Card.Body className="table-full-width table-responsive px-0">
-                <Table className="table-hover table-striped">
-                  <thead>
-                    <tr>
-                      <th className="border-0">DATE</th>
-                      <th className="border-0">PRICE</th>
-                      <th className="border-0">CURRENCYNAME</th>
-                      <th className="border-0">SYMBOL</th>
-                      <th className="border-0">CURRENCY</th>
-                    </tr>
-                  </thead>
-                  <tbody>{exchangeTable()}</tbody>
-                </Table>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row> */}
-        {GetIssueTable()}
+        {/* {issueDate && issueTable(issueDate)} */}
       </Container>
     </div>
   );
 }
 
-// const options = [
-//   {
-//     low: 0,
-//     high: 800,
-//     showArea: false,
-//     height: "245px",
-//     axisX: {
-//       showGrid: false,
-//     },
-//     lineSmooth: true,
-//     showLine: true,
-//     showPoint: true,
-//     fullWidth: true,
-//     chartPadding: {
-//       right: 50,
-//     },
-//   },
-// ];
+{
+  /* <div>
+  <Container fluid>
+    {resources && Dropbuttons(resources)}
+    <p></p>
+    <Row>
+      <Col md="12">
+        <Card>
+          <Card.Body>
 
-// const responsiveOptions = [
-//   [
-//     "screen and (max-width: 640px)",
-//     {
-//       axisX: {
-//         labelInterpolationFnc: function (value) {
-//           return value[0];
-//         },
-//       },
-//     },
-//   ],
-// ];
+            {resourceData &&
+              resourceData["symbols"].map((item, i) => {
+                if (item == id) {
+                  return (
+                    <App
+                      variant="outline-primary"
+                      korName={resourceData["korName"][i]}
+                      price={resourceData["price"][i]}
+                      date={resourceData["date"][i]}
+                      engName={resourceData["engName"][i]}
+                      symbols={resourceData["symbols"][i]}
+                      unit={resourceData["unit"][i]}
+                      color="#A9A9A9"
+                    ></App>
+                  );
+                }
+              })}
+          </Card.Body>
+        </Card>
+        <p />
+      </Col>
+    </Row>
+
+    {issueDate && issueTable(issueDate)}
+  </Container>
+</div>; */
+}
 
 export default DetailPage;
