@@ -44,13 +44,13 @@ const IssueSlice = function (Data) {
   } else {
     let index = 0;
     let resourceSymbol = Data[index].resourceSymbol;
-    let issueDate = [[Data[index].issueDate]];
-    let publisher = [[Data[index].publisher]];
+    let issueDate = [[]];
+    let publisher = [[]];
     let resourceEngName = [[Data[index].resourceEngName]];
     let resourceKorName = [[Data[index].resourceKorName]];
     let resourceSymbols = [[Data[index].resourceSymbol]];
-    let title = [[Data[index].title]];
-    let url = [[Data[index].url]];
+    let title = [[]];
+    let url = [[]];
 
     Data.map((item) => {
       // console.log(item);
@@ -81,7 +81,6 @@ const IssueSlice = function (Data) {
       title: title,
       url: url,
     };
-    console.log(result);
     return result;
   }
 };

@@ -16,7 +16,7 @@ import {
   Tooltip,
 } from "react-bootstrap";
 
-function issueTable(data) {
+function IssueTable(props) {
   return (
     <>
       <Card>
@@ -31,25 +31,31 @@ function issueTable(data) {
             <th>자재 이름</th>
           </tr>
         </thead>
-        {data.map((item) => {
+        {props.issueDate.map((item, i) => {
           return (
             <tbody>
               <tr>
-                <td>{item.issueDate}</td>
+                <td>{props.issueDate[i]}</td>
                 <td>
                   <a href="#" onClick={() => window.open(item.url)}>
-                    {item.title}
+                    {props.title[i]}
                   </a>
                 </td>
-                <td>{item.publisher}</td>
-                <td>{item.resourceSymbol}</td>
+                <td>{props.publisher[i]}</td>
+                <td>{props.resourceSymbol}</td>
               </tr>
             </tbody>
           );
         })}
+
+        {/* {data.map((item) => {
+          return (
+            
+          );
+        })} */}
       </Table>
     </>
   );
 }
 
-export default issueTable;
+export default IssueTable;

@@ -1,5 +1,5 @@
 import axios from "axios";
-import App from "./chart";
+import Chart from "./chart";
 import { ResourceInfoData } from "../axios/infoAxios";
 import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
@@ -21,7 +21,7 @@ function MainPage() {
         resourceData["korName"].map((item, i) => {
           return (
             <Card>
-              <App
+              <Chart
                 variant="outline-primary"
                 korName={resourceData["korName"][i]}
                 price={resourceData["price"][i]}
@@ -30,8 +30,7 @@ function MainPage() {
                 symbols={resourceData["symbols"][i]}
                 unit={resourceData["unit"][i]}
                 color="#A9A9A9"
-              ></App>
-              {/* <a href="http://localhost:3000/admin/detail">상세보기</a> */}
+              ></Chart>
               <Button
                 href={`/admin/detail/${resourceData["symbols"][i]}`}
                 variant="dark"

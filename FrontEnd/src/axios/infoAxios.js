@@ -7,6 +7,7 @@ const ResourceInfoData = function (label, url, setFunc) {
       .get("http://222.98.255.30:12344/" + label + "/" + url)
       .then((response) => {
         let sliceData = ResourceSlice(response.data);
+
         setFunc(sliceData);
       });
   } catch (error) {
@@ -19,9 +20,7 @@ const IssueInfoData = function (label, url, setFunc) {
     axios
       .get("http://222.98.255.30:12344/" + label + "/" + url)
       .then((response) => {
-        console.log(response.data);
         let sliceData = IssueSlice(response.data);
-        console.log(sliceData);
         setFunc(sliceData);
       });
   } catch (error) {
