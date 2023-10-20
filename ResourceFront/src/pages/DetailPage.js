@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ResourceInfoData, tbData, IssueInfoData } from "../axios/infoAxios";
-import Chart from "../components/chart";
+import Chart from "components/Chart";
 import { useParams } from "react-router-dom";
 import DateDropdown from "../components/DatePicker";
 // import ChartistGraph from "react-chartist";
