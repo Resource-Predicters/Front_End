@@ -45,7 +45,6 @@ export const profile = () => async (dispatch) => {
         },
       }
     );
-    console.log(response);
   } catch (err) {
     throw new Error(err);
   }
@@ -61,7 +60,6 @@ export const signupDB = (id, nickname, password) => async (dispatch) => {
         name: nickname,
       }
     );
-    console.log(response);
   } catch (err) {
     throw new Error(err);
   }
