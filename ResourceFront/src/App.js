@@ -13,7 +13,7 @@ function App() {
   const password = "password";
 
   // POST 요청을 보낼 엔드포인트 URL
-  const postUrl = "http://222.98.255.30:12344/user/login";
+  const postUrl = `${process.env.REACT_APP_BACKEND_URL}/user/login`;
   const dispatch = useDispatch();
   const token = dispatch(loginDB(name, password));
 

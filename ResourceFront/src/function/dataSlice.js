@@ -85,4 +85,42 @@ const IssueSlice = function (Data) {
   }
 };
 
-export { ResourceSlice, IssueSlice };
+const AiDataSlice = function (Data) {
+  if (Data == undefined) {
+    return;
+  } else {
+    let index = 0;
+    let symbol = Data[index].symbol;
+    let symbols = [[Data[index].symbol]];
+    let engName = [[Data[index].engName]];
+    let korName = [[Data[index].korName]];
+    let price = [[]];
+    let date = [[]];
+
+    Data.map((item) => {
+      if (symbol == item.symbol) {
+        price[index].push(item.price);
+        date[index].push(item.date);
+      } else {
+        index++;
+        symbol = item.symbol;
+        symbols.push([item.symbol]);
+        engName.push([item.engName]);
+        korName.push([item.korName]);
+        price.push([item.price]);
+        date.push([item.date]);
+      }
+    });
+    let result = {
+      symbols: symbols.flat(),
+      engName: engName,
+      korName: korName,
+      price: price,
+      date: date,
+    };
+
+    return result;
+  }
+};
+
+export { ResourceSlice, IssueSlice, AiDataSlice };

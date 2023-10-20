@@ -25,7 +25,9 @@ function DetailPage() {
   const getfun = async function getData() {
     try {
       const response = await axios
-        .get("http://222.98.255.30:12344/exchange/getinfo?date=2023-09-20")
+        .get(
+          `${process.env.REACT_APP_BACKEND_URL}/exchange/getinfo?date=2023-09-20`
+        )
         .then((response) => {
           console.log(response.data);
           let save = [...response.data];

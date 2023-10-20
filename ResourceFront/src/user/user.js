@@ -21,10 +21,13 @@ const userSlice = createSlice({
 
 export const loginDB = (id, password) => async (dispatch) => {
   try {
-    const response = await axios.post("http://222.98.255.30:12344/user/login", {
-      name: id,
-      password: password,
-    });
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/user/login`,
+      {
+        name: id,
+        password: password,
+      }
+    );
     sessionStorage.setItem("accessToken", response.data.token);
   } catch (err) {
     throw new Error(err);
@@ -35,7 +38,7 @@ export const profile = () => async (dispatch) => {
   try {
     const token = sessionStorage.getItem("accessToken");
     const response = await axios.get(
-      "http://222.98.255.30:12344/user/profile",
+      `${process.env.REACT_APP_BACKEND_URL}/user/profile`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -50,11 +53,14 @@ export const profile = () => async (dispatch) => {
 
 export const signupDB = (id, nickname, password) => async (dispatch) => {
   try {
-    const response = await axios.post("http://222.98.255.30:12344/user/join", {
-      //   email: id,
-      password: password,
-      name: nickname,
-    });
+    const response = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/user/join`,
+      {
+        //   email: id,
+        password: password,
+        name: nickname,
+      }
+    );
     console.log(response);
   } catch (err) {
     throw new Error(err);

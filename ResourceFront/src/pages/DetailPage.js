@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ResourceInfoData, tbData, IssueInfoData } from "../axios/infoAxios";
-import Chart from "../components/Chart";
+import Chart from "../components/chart";
 import { useParams } from "react-router-dom";
 import DateDropdown from "../components/DatePicker";
 // import ChartistGraph from "react-chartist";
@@ -47,9 +47,6 @@ function DetailPage() {
       setIssueDate
     );
     tbData("resource", "gettball", setResources);
-
-    console.log("dropData", dropData);
-    console.log("startDate", startDate);
   }, [dropData, startDate]);
 
   return (
@@ -62,7 +59,6 @@ function DetailPage() {
           {resourceData &&
             resourceData["symbols"].map((item, i) => {
               if (item == dropData) {
-                console.log(resourceData);
                 return (
                   <Chart
                     variant="outline-primary"

@@ -1,90 +1,100 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ResourceInfoData, tbData, ResourceAiData } from "../axios/infoAxios";
+import Chart from "../components/chart";
+import { useParams } from "react-router-dom";
+import DateDropdown from "../components/DatePicker";
 // import ChartistGraph from "react-chartist";
-
+import ResourceDropdown from "../components/DropButtons";
+import IssueTable from "../components/IssueTable";
 // react-bootstrap components
-import {
-  Badge,
-  Button,
-  Card,
-  Navbar,
-  Nav,
-  Table,
-  Container,
-  Row,
-  Col,
-  Form,
-  OverlayTrigger,
-  Tooltip,
-} from "react-bootstrap";
+import { Card, Table, Container, Row, Col } from "react-bootstrap";
 
 function AiPage() {
+  let [resourceData, setResourceData] = useState();
+  let [resourceAiData, setResourceAiData] = useState();
+  let [resources, setResources] = useState();
+  let [dropData, setDropData] = useState();
+  let aiChartData = [];
+
+  let defaultDate = new Date();
+  defaultDate.setDate(defaultDate.getDate() - 30);
+  defaultDate = formatDate(defaultDate);
+
+  let AiDate = new Date();
+  AiDate.setDate(AiDate.getDate() + 7);
+  AiDate = formatDate(AiDate);
+  // let [startDate, setStartDate] = useState(defaultDate);
+  let { id } = useParams();
+
+  useEffect(() => {
+    ResourceInfoData(
+      "resource",
+      "getinfo?date=" + defaultDate,
+      setResourceData
+    );
+
+    ResourceAiData("resource", "getaidata?date=" + AiDate, setResourceAiData);
+
+    tbData("resource", "gettball", setResources);
+    setDropData(id);
+  }, []);
+
+  useEffect(() => {
+    aiChartData = [];
+    resourceData &&
+      resourceData["symbols"].map((item, i) => {
+        if (item == dropData) {
+          // resource의 price와 date를 resourceAiData의 price와 date를 합쳐서 aiChartData에 넣어준다
+          aiChartData = [
+            [...resourceData["price"][i], ...resourceAiData["price"][i]],
+            [...resourceData["date"][i], ...resourceAiData["date"][i]],
+          ];
+        }
+      });
+  }, [dropData]);
+
   return (
-    <>
+    <div>
       <Container fluid>
-        <Row>
-          <Col md="6">
-            <Card>
-              <Card.Header>
-                <Card.Title as="h4">원자재 이름</Card.Title>
-              </Card.Header>
-              <Card.Body>
-                <div className="ct-chart" id="chartHours">
-                  {/* <ChartistGraph
-                    data={{
-                      labels: [
-                        "9:00AM",
-                        "12:00AM",
-                        "3:00PM",
-                        "6:00PM",
-                        "9:00PM",
-                        "12:00PM",
-                        "3:00AM",
-                        "6:00AM",
-                      ],
-                      series: [
-                        [287, 385, 490, 492, 554, 586, 698, 695],
-                        [67, 152, 143, 240, 287, 335, 435, 437],
-                        [23, 113, 67, 108, 190, 239, 307, 308],
-                      ],
-                    }}
-                    type="Line"
-                    options={{
-                      low: 0,
-                      high: 800,
-                      showArea: false,
-                      height: "245px",
-                      axisX: {
-                        showGrid: false,
-                      },
-                      lineSmooth: true,
-                      showLine: true,
-                      showPoint: true,
-                      fullWidth: true,
-                      chartPadding: {
-                        right: 50,
-                      },
-                    }}
-                    responsiveOptions={[
-                      [
-                        "screen and (max-width: 640px)",
-                        {
-                          axisX: {
-                            labelInterpolationFnc: function (value) {
-                              return value[0];
-                            },
-                          },
-                        },
-                      ],
+        {resources && ResourceDropdown(resources, setDropData)}
+        {/* {DateDropdown(startDate, setStartDate)} */}
+        <p></p>
+        <Card>
+          {resourceData &&
+            resourceData["symbols"].map((item, i) => {
+              if (item == dropData) {
+                return (
+                  <Chart
+                    variant="outline-primary"
+                    korName={resourceData["korName"][i]}
+                    price={[
+                      ...resourceData["price"][i],
+                      ...resourceAiData["price"][i],
                     ]}
-                  /> */}
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+                    date={[
+                      ...resourceData["date"][i],
+                      ...resourceAiData["date"][i],
+                    ]}
+                    engName={resourceData["engName"][i]}
+                    symbols={resourceData["symbols"][i]}
+                    unit={resourceData["unit"][i]}
+                    color="#A9A9A9"
+                    forecastDataPoints={7}
+                  ></Chart>
+                );
+              }
+            })}
+        </Card>
+        <p />
       </Container>
-    </>
+    </div>
   );
 }
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
 
+  return `${year}-${month}-${day}`;
+}
 export default AiPage;

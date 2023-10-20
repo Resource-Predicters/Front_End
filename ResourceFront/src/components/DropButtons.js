@@ -5,10 +5,6 @@ import axios from "axios";
 
 function ResourceDropdown(data, setDropData) {
   const handleSelect = (eventKey, event) => {
-    console.log("선택된 아이템의 eventKey:", eventKey);
-    console.log("선택된 아이템의 텍스트 내용:", event.target.text);
-
-    // 선택된 아이템 정보를 상태로 업데이트
     setDropData(eventKey);
   };
   return (
