@@ -37,7 +37,7 @@ function IssueTable(props) {
               <tr>
                 <td>{props.issueDate[i]}</td>
                 <td>
-                  <a href="#" onClick={() => window.open(item.url)}>
+                  <a href="#" onClick={() => window.open(props.url[i])}>
                     {props.title[i]}
                   </a>
                 </td>
