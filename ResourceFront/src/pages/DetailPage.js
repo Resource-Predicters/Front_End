@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { ResourceInfoData, tbData, IssueInfoData } from "../axios/infoAxios";
-import Chart from "./chart";
+import Chart from "../components/Chart";
 import { useParams } from "react-router-dom";
-import DateDropdown from "./DatePicker";
+import DateDropdown from "../components/DatePicker";
 // import ChartistGraph from "react-chartist";
-import ResourceDropdown from "./DropButtons";
-import IssueTable from "./GetIssueTable";
+import ResourceDropdown from "../components/DropButtons";
+import IssueTable from "../components/IssueTable";
 // react-bootstrap components
 import { Card, Table, Container, Row, Col } from "react-bootstrap";
 

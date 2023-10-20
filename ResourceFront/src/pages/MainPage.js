@@ -1,5 +1,5 @@
 import axios from "axios";
-import Chart from "./chart";
+import Chart from "../components/Chart";
 import { ResourceInfoData } from "../axios/infoAxios";
 import { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
