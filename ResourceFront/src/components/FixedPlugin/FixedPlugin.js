@@ -31,7 +31,7 @@ function FixedPlugin({
   color,
   setColor,
   image,
-  setImage
+  setImage,
 }) {
   // constructor(props) {
   //   super(props);

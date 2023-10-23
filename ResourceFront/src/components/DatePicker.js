@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const DateDropdown = (startDate, setStartDate) => {
   return (
     <DatePicker
+      dateFormat="yyyy-MM-dd"
       selected={startDate}
       onChange={(date) => {
         console.log(date);
