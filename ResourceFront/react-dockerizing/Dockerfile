@@ -42,7 +42,7 @@
 
 
 # 1단계: 노드.js를 사용하여 React 앱 빌드
-
+FROM node:18 AS build
 
 
 
