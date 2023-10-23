@@ -51,7 +51,7 @@ FROM node:18 AS build
 # 2단계: Nginx를 사용하여 React 앱 제공
 FROM nginx:1.25.2
 
-mkdir /app
+RUN mkdir /app
 WORKDIR /app
 COPY ./ResourceFront/build/ .
 
