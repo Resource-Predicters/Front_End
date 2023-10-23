@@ -52,12 +52,13 @@ RUN mkdir /app
 WORKDIR /app
 
 # 호스트의 React 앱 결과물을 컨테이너 내부의 /app 디렉토리로 복사합니다.
-COPY ../build /app
+COPY ./build /app
 
 # Nginx의 기본 설정 파일을 삭제
 RUN rm -rf /etc/nginx/conf.d/default.conf
 # 컨테이너 내부의 Nginx 설정 파일을 복사
 COPY nginx/nginx.conf /etc/nginx/conf.d
+COPY --from=build /app /usr/share/nginx/html
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
