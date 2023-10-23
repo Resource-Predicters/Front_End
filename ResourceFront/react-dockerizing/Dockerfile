@@ -53,7 +53,7 @@ FROM nginx:1.25.2
 
 RUN mkdir /app
 WORKDIR /app
-COPY ./ResourceFront/build/ .
+COPY ./build .
 
 # Nginx의 기본 설정 파일을 삭제
 RUN rm -rf /etc/nginx/conf.d/default.conf
