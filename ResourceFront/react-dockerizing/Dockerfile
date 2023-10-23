@@ -52,7 +52,7 @@ FROM node:18 AS build
 FROM nginx:1.25.2
 
 WORKDIR /app
-COPY ./build/ .
+COPY ./ResourceFront/build/ .
 
 # Nginx의 기본 설정 파일을 삭제
 RUN rm -rf /etc/nginx/conf.d/default.conf
