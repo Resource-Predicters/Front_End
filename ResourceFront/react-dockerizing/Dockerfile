@@ -44,24 +44,40 @@
 # 1단계: 노드.js를 사용하여 React 앱 빌드
 FROM node:18 AS build
 
-
-
-
-
 # 2단계: Nginx를 사용하여 React 앱 제공
 FROM nginx:1.25.2
 
+# 컨테이너 내부에 /app 디렉토리를 만듭니다.
 RUN mkdir /app
 WORKDIR /app
-COPY ./build .
+
+# 호스트의 React 앱 결과물을 컨테이너 내부의 /app 디렉토리로 복사합니다.
+COPY ./build /app
 
 # Nginx의 기본 설정 파일을 삭제
 RUN rm -rf /etc/nginx/conf.d/default.conf
 # 컨테이너 내부의 Nginx 설정 파일을 복사
 COPY nginx/nginx.conf /etc/nginx/conf.d
 
-# 첫 번째 단계에서 빌드한 React 앱 빌드 결과물을 두 번째 단계로 복사
-COPY --from=build /app /usr/share/nginx/html
-
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+
+
+
+# # 2단계: Nginx를 사용하여 React 앱 제공
+# FROM nginx:1.25.2
+
+# RUN mkdir /app
+# WORKDIR /app
+# COPY ./build .
+
+# # Nginx의 기본 설정 파일을 삭제
+# RUN rm -rf /etc/nginx/conf.d/default.conf
+# # 컨테이너 내부의 Nginx 설정 파일을 복사
+# COPY nginx/nginx.conf /etc/nginx/conf.d
+
+# # 첫 번째 단계에서 빌드한 React 앱 빌드 결과물을 두 번째 단계로 복사
+# COPY --from=build /app /usr/share/nginx/html
+
+# EXPOSE 80
+# CMD ["nginx", "-g", "daemon off;"]
