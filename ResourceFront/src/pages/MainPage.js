@@ -11,6 +11,7 @@ import Button from "react-bootstrap/Button";
 function MainPage() {
   let [resourceData, setResourceData] = useState();
   let defaultDate = new Date("2023-08-01");
+  let colors = ["FFFB73", "3D30A2", "3D30A2", "3D30A2"];
   defaultDate.setDate(defaultDate.getDate() - 30);
   function formatDate(date) {
     const year = date.getFullYear();
@@ -48,7 +49,6 @@ function MainPage() {
                   engName={resourceData["engName"][i]}
                   symbols={resourceData["symbols"][i]}
                   unit={resourceData["unit"][i]}
-                  color="#A9A9A9"
                 ></Chart>
                 <Button
                   href={`/admin/detail/${resourceData["symbols"][i]}`}

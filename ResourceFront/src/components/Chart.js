@@ -2,93 +2,81 @@ import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 
 function Chart(props) {
-  const [chartData, setChartData] = useState({
-    series: [
-      {
-        name: props.engName,
-        data: props.price,
-      },
-    ],
-    options: {
-      chart: {
-        height: 300,
-        type: "line",
-        zoom: {
-          type: "x",
-          enabled: true,
-          autoScaleYaxis: true,
-        },
-        toolbar: {
-          autoSelected: "zoom",
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          curve: "straight",
-        },
-        title: {
-          text: props.korName + " " + props.unit,
-          align: "center",
-          style: {
-            fontSize: "20px",
-            fontWeight: "bold",
-            fontFamily: undefined,
-            color: props.color,
-          },
-        },
-        grid: {
-          row: {
-            colors: ["#f3f3f3", "transparent"],
-            opacity: 0.5,
-          },
-        },
-        xaxis: {
-          categories: props.date,
-        },
-        yaxis: {
-          title: {
-            text: props.unit,
-          },
-        },
-      },
-    },
-  });
-
-  // forecastDataPoints가 존재하는 경우에만 설정
-  if (props.forecastDataPoints) {
-    chartData.options.forecastDataPoints = {
-      count: props.forecastDataPoints,
-    };
-  }
-
+  const [chartData, setChartData] = useState(null);
   useEffect(() => {
-    // props.price 또는 다른 필요한 프롭스가 변경될 때 실행
-    setChartData((prevData) => ({
-      ...prevData,
+    // 데이터 포인트마다 색상을 설정하는 새로운 데이터 배열 생성
+
+    const dataWithColors = props.price.map((price, index) => ({
+      x: props.date[index],
+      y: price,
+      color: props.color, // 데이터 포인트의 색상
+    }));
+
+    // 그래프 데이터 및 옵션 초기화
+    setChartData({
       series: [
         {
           name: props.engName,
-          data: props.price,
+          data: dataWithColors, // 데이터 포인트에 색상이 포함됨
         },
       ],
       options: {
-        ...prevData.options,
-        xaxis: {
-          categories: props.date,
+        chart: {
+          height: 300,
+          type: "line",
+          zoom: {
+            type: "x",
+            enabled: true,
+            autoScaleYaxis: true,
+          },
+          toolbar: {
+            autoSelected: "zoom",
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            curve: "smooth", // 수정: curve 옵션 변경
+          },
+          title: {
+            text: props.korName + " " + props.unit,
+            align: "center",
+            style: {
+              fontSize: "30px",
+              fontWeight: "bold",
+              fontFamily: undefined,
+              color: props.color, // 그래프 제목 색상
+            },
+          },
+          grid: {
+            row: {
+              colors: [props.color, "transparent"], // 그래프 행 색상
+              opacity: 0.5,
+            },
+          },
+          xaxis: {
+            categories: props.date,
+          },
+          yaxis: {
+            title: {
+              text: props.unit,
+            },
+          },
         },
       },
-    }));
-  }, [props.price, props.date]);
+    });
+  }, [props.price, props.date, props.color]);
 
   return (
     <div id="chart">
-      <ReactApexChart
-        options={chartData.options}
-        series={chartData.series}
-        type="line"
-        height={350}
-      />
+      {chartData && (
+        <ReactApexChart
+          options={chartData.options}
+          series={chartData.series}
+          type="line"
+          height={350}
+        />
+      )}
     </div>
   );
 }
