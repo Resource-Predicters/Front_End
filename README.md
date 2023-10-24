@@ -30,36 +30,36 @@
 
 <center>
     <img src="img/화면설계도(웹+앱)_page-0001.jpg" />
-    <h2>원자재 현황차트</h2>
+    <h4>원자재 현황차트</h4>
 </center>
 
 <br/>
 
 <center>
     <img src="img/화면설계도(웹+앱)_page-0002.jpg" />
-    <h2>상세정보 페이지</h2>
+    <h4>상세정보 페이지</h4>
 </center>
 
 <br/>
 
 <center>
     <img src="img/화면설계도(웹+앱)_page-0003.jpg" />
-    <h2>가격예측 페이지</h2>
+    <h4>가격예측 페이지</h4>
 </center>
 
 <br/>
 
 <center>
     <img src="img/화면설계도(웹+앱)_page-0004.jpg" />
-    <h2>로그인 페이지</h2>
+    <h4>로그인 페이지</h4>
 </center>
 
 <br/>
 
-<center>
+
     <img src="img/화면설계도(웹+앱)_page-0005.jpg" />
-    <h2>회원가입 페이지</h2>
-</center>
+    <h4>회원가입 페이지</h4>
+
 
 <br/>
 
