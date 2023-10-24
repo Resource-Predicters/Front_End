@@ -14,8 +14,8 @@
 
 ## 🤹🏻 기술 스택 선정 이유
 - React : 리액트가 유명하다더라
-- Redux : 상태 관리
 - axios : 비동기통신할라고 한거지 뭐
+- 디자인 라이브러리
 
 
 ## 📌 프로젝트 목표
@@ -29,26 +29,75 @@
 ## 📄 UI/UX 설계도
 
 <center>
-    <img src="./img/화면설계도.pdf" />
+    <img src="img/화면설계도(웹+앱)_page-0001.jpg" />
+    <h2>원자재 현황차트</h2>
 </center>
+
+<br/>
+
+<center>
+    <img src="img/화면설계도(웹+앱)_page-0002.jpg" />
+    <h2>상세정보 페이지</h2>
+</center>
+
+<br/>
+
+<center>
+    <img src="img/화면설계도(웹+앱)_page-0003.jpg" />
+    <h2>가격예측 페이지</h2>
+</center>
+
+<br/>
+
+<center>
+    <img src="img/화면설계도(웹+앱)_page-0004.jpg" />
+    <h2>로그인 페이지</h2>
+</center>
+
+<br/>
+
+<center>
+    <img src="img/화면설계도(웹+앱)_page-0005.jpg" />
+    <h2>회원가입 페이지</h2>
+</center>
+
+<br/>
 
 
 ## 🔍 Overview
 
-### 1. 사용자 회원 가입 및 로그인 페이지
-
-<center>
-    <img src="./img/pic2.png" />
-</center>
-비동기 통신을 활용해서 백엔드에 어쩌고 어쩌고 JWT 토클을 어디에 저장하고 설명설명
-
-<br>
-
-### 2. 대시보드 페이지
+### 1. 원자재 현황 페이지
 
 <center>
     <img src="./img/pic1.png" />
 </center>
 어떤 어떤 어떤 걸 실시간으로 확인할 수 있고 제어할 수 있고~~~~
+
+<br>
+
+### 2. 상세 정보 페이지
+
+<center>
+    <img src="./img/pic1.png" />
+</center>
+어떤 어떤 어떤 걸 실시간으로 확인할 수 있고 제어할 수 있고~~~~
+
+<br>
+
+### 3. AI 가격예측 페이지
+
+<center>
+    <img src="./img/pic1.png" />
+</center>
+어떤 어떤 어떤 걸 실시간으로 확인할 수 있고 제어할 수 있고~~~~
+
+<br>
+
+### 4. 사용자 회원 가입 및 로그인 페이지
+
+<center>
+    <img src="./img/pic2.png" />
+</center>
+비동기 통신을 활용해서 백엔드에 어쩌고 어쩌고 JWT 토클을 어디에 저장하고 설명설명
 
 <br>
