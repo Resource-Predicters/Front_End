@@ -56,10 +56,10 @@
 
 <br/>
 
-
+<center>
     <img src="img/화면설계도(웹+앱)_page-0005.jpg" />
     <h4>회원가입 페이지</h4>
-
+</center>
 
 <br/>
 
