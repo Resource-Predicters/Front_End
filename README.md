@@ -29,35 +29,35 @@
 ## 📄 UI/UX 설계도
 
 <center>
-    <img src="img/화면설계도(웹+앱)_page-0001.jpg" />
+    <img src="img/화면설계도(웹) 1024_page-0001.jpg" />
     <h4>원자재 현황차트</h4>
 </center>
 
 <br/>
 
 <center>
-    <img src="img/화면설계도(웹+앱)_page-0002.jpg" />
+    <img src="img/화면설계도(웹) 1024_page-0002.jpg" />
     <h4>상세정보 페이지</h4>
 </center>
 
 <br/>
 
 <center>
-    <img src="img/화면설계도(웹+앱)_page-0003.jpg" />
+    <img src="img/화면설계도(웹) 1024_page-0003.jpg" />
     <h4>가격예측 페이지</h4>
 </center>
 
 <br/>
 
 <center>
-    <img src="img/화면설계도(웹+앱)_page-0004.jpg" />
+    <img src="img/화면설계도(웹) 1024_page-0004.jpg" />
     <h4>로그인 페이지</h4>
 </center>
 
 <br/>
 
 <center>
-    <img src="img/화면설계도(웹+앱)_page-0005.jpg" />
+    <img src="img/화면설계도(웹) 1024_page-0005.jpg" />
     <h4>회원가입 페이지</h4>
 </center>
 
