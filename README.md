@@ -28,8 +28,9 @@
 
 ## 📄 UI/UX 설계도
 
-[[설계도 확인할 수 있는 링크 또는 그림]](www.naver.com)
-
+<center>
+    <img src="./img/화면설계도.pdf" />
+</center>
 
 
 ## 🔍 Overview
