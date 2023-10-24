@@ -36,7 +36,7 @@ function Sidebar({ color, image, routes }) {
         }}
       />
       <div className="sidebar-wrapper">
-        <div className="logo d-flex align-items-center justify-content-start">
+        <div className="mt-1 logo d-flex align-items-center justify-content-start">
           <a
             href="https://www.creative-tim.com?ref=lbd-sidebar"
             className="simple-text logo-mini mx-1"
@@ -45,9 +45,7 @@ function Sidebar({ color, image, routes }) {
               <img src={require("assets/img/reactlogo.png")} alt="..." />
             </div>
           </a>
-          <a className="simple-text" href="http://www.creative-tim.com">
-            Resource
-          </a>
+          <a className="simple-text">Resource</a>
         </div>
         <Nav>
           {routes.map((prop, key) => {
