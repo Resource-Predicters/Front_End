@@ -35,7 +35,7 @@ function SigninPage() {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="text-center">
         <Row>
           <Col md="6">
             <form onSubmit={handleSubmit}>
@@ -45,8 +45,8 @@ function SigninPage() {
                 </Card.Header>
                 <Card.Body>
                   <Form>
-                    <Row>
-                      <Col className="pr-1" md="8">
+                    <Row className="justify-content-center">
+                      <Col className="pr-1" md="10">
                         <Form.Group>
                           <label htmlFor="id">ID</label>
                           <Form.Control
@@ -58,8 +58,8 @@ function SigninPage() {
                         </Form.Group>
                       </Col>
                     </Row>
-                    <Row>
-                      <Col className="pr-1" md="8">
+                    <Row className="justify-content-center">
+                      <Col className="pr-1" md="10">
                         <Form.Group>
                           <label htmlFor="pw">Password</label>
                           <Form.Control
@@ -71,15 +71,16 @@ function SigninPage() {
                         </Form.Group>
                       </Col>
                     </Row>
+                    <p />
                     <Button
-                      className="btn-fill pull-right"
+                      className="btn-fill pull-right mr-1"
                       type="submit"
                       variant="info"
                     >
                       로그인
                     </Button>
                     <Button
-                      className="btn-fill pull-left"
+                      className="btn-fill pull-left ml-1"
                       type="submit"
                       variant="info"
                     >

@@ -84,7 +84,7 @@ function SignupPage() {
 
   return (
     <>
-      <Container fluid>
+      <Container fluid className="text-center">
         <Row>
           <Col md="6">
             <Card>
@@ -93,8 +93,8 @@ function SignupPage() {
               </Card.Header>
               <Card.Body>
                 {/* <Form> */}
-                <Row>
-                  <Col className="pr-1" md="8">
+                <Row className="justify-content-center">
+                  <Col className="pr-1" md="10">
                     <Form.Group>
                       <label htmlFor="name">Name</label>
                       <Form.Control
@@ -106,8 +106,8 @@ function SignupPage() {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row>
-                  <Col className="pr-1" md="8">
+                <Row className="justify-content-center">
+                  <Col className="pr-1" md="10">
                     <Form.Group>
                       <label htmlFor="email">Email</label>
                       <Form.Control
@@ -119,8 +119,8 @@ function SignupPage() {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row>
-                  <Col className="pr-1" md="8">
+                <Row className="justify-content-center">
+                  <Col className="pr-1" md="10">
                     <Form.Group>
                       <label htmlFor="id">ID</label>
                       <Form.Control
@@ -132,8 +132,8 @@ function SignupPage() {
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row>
-                  <Col className="pr-1" md="8">
+                <Row className="justify-content-center">
+                  <Col className="pr-1" md="10">
                     <Form.Group>
                       <label htmlFor="pw">Password</label>
                       <Form.Control
@@ -145,6 +145,7 @@ function SignupPage() {
                     </Form.Group>
                   </Col>
                 </Row>
+                <br />
                 {/* <Button onClick={handleSubmit}></Button> */}
                 <Button
                   className="btn-fill pull-right"

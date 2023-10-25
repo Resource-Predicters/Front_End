@@ -32,7 +32,7 @@ const dashboardRoutes = [
   {
     // 로그인
     path: "/signin",
-    name: "Signin",
+    name: "Login",
     icon: "nc-icon nc-single-02",
     component: SigninPage,
     layout: "/admin",
