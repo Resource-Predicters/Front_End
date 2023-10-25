@@ -35,6 +35,12 @@
 
 
 ## 📄 UI/UX 설계도
+<center>
+    <h4>메뉴 구조도</h4>
+    <img src="img/화면설계도(웹) 1024_page-0001.jpg" />
+</center>
+
+<br/>
 
 <center>
     <h4>원자재 현황차트</h4>
@@ -71,10 +77,12 @@
 
 <br/>
 
-## ⛓ Flow Chart
 <center>
+    <h4>Flow Chart</h4>
     <img src="img/FlowChart.jpg" />
 </center>
+
+<br/>
 
 ## 🔍 Overview
 
