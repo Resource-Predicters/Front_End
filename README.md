@@ -37,7 +37,7 @@
 ## 📄 UI/UX 설계도
 <center>
     <h4>메뉴 구조도</h4>
-    <img src="img/화면설계도(웹) 1024_page-0001.jpg" />
+    <img src="img/메뉴 구성도 (1).jpg" />
 </center>
 
 <br/>
