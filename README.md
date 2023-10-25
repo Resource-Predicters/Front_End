@@ -5,7 +5,7 @@
 **Front Tool** <br/>
 <img src="https://img.shields.io/badge/React.js-61DAFB?style=round&logo=React&logoColor=white" /> <img src="https://img.shields.io/badge/Axios-5A29E4?style=round&logo=Axios&logoColor=white" /> <img src="https://img.shields.io/badge/Redux-764ABC?style=round&logo=Redux&logoColor=white" /> 
 
-**Design Librar** <br/>
+**Design Library** <br/>
 <img src="https://img.shields.io/badge/Mui-007FFF?style=round&logo=Mui&logoColor=white" /> <img src="https://img.shields.io/badge/bootstrap-7952B3?style=round&logo=Bootstrap&logoColor=white" /> <img src="https://img.shields.io/badge/Apexcharts-00A4FF?style=round" /> 
 
 **Cooperation Tool** <br/>
@@ -15,10 +15,10 @@
 
 
 ## 🤹🏻 기술 스택 선정 이유
-- React : 리액트가 유명하다더라
-- axios : 비동기통신할라고 한거지 뭐
+- React : 
+- axios : 
 - Redux : 
-- 디자인 라이브러리
+- 
 
 
 ## 📌 프로젝트 목표
