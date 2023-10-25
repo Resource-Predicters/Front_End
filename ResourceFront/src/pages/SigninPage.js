@@ -39,6 +39,10 @@ function SigninPage() {
     history.push("/admin/signup");
   };
 
+  const handleSigninClick = () => {
+    history.push("/admin/main");
+  };
+
   return (
     <>
       <Container fluid className="text-center">
@@ -86,6 +90,7 @@ function SigninPage() {
                       className="btn-fill pull-right mr-1"
                       type="submit"
                       variant="info"
+                      onClick={handleSigninClick}
                     >
                       로그인
                     </Button>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 // react-bootstrap components
 import {
@@ -19,7 +20,7 @@ function SignupPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
+  const [password, setPw] = useState("");
   // const [userData, setUserData] = useState('');
 
   const handleNameChange = (e) => {
@@ -44,22 +45,28 @@ function SignupPage() {
     console.log("이름:", name);
     console.log("이메일:", email);
     console.log("아이디:", id);
-    console.log("비밀번호:", pw);
+    console.log("비밀번호:", password);
 
     const userData = {
       name,
       email,
       id,
-      pw,
+      password,
     };
     sendSignupData(userData);
+  };
+
+  const history = useHistory();
+
+  const handleSignupClick = () => {
+    history.push("/admin/signin");
   };
 
   // 백엔드로 회원가입 데이터 보내기
   const sendSignupData = async function sendData(userData) {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/user/login`,
+        `${process.env.REACT_APP_BACKEND_URL}user/join`,
         {
           method: "POST",
           headers: {
@@ -68,15 +75,6 @@ function SignupPage() {
           body: JSON.stringify(userData),
         }
       );
-
-      if (sendSignupData.ok) {
-        alert("회원가입이 완료되었습니다.");
-        console.log(sendSignupData.ok);
-        // 원하는 페이지로 리다이렉트하거나 다른 작업을 수행할 수 있습니다.
-      } else {
-        alert("회원가입에 실패했습니다.");
-        console.log(sendSignupData.ok);
-      }
     } catch (error) {
       console.error("회원가입 요청 중 오류 발생:", error);
     }
@@ -142,12 +140,12 @@ function SignupPage() {
                   <Col className="pr-1" md="10">
                     <Form.Group>
                       <Col md="1" style={{ padding: "6px" }}>
-                        <label htmlFor="pw">Password</label>
+                        <label htmlFor="password">Password</label>
                       </Col>
                       <Form.Control
                         type="password"
-                        id="pw"
-                        value={pw}
+                        id="password"
+                        value={password}
                         onChange={handlePwChange}
                       ></Form.Control>
                     </Form.Group>
@@ -159,7 +157,7 @@ function SignupPage() {
                   className="btn-fill pull-right"
                   type="submit"
                   variant="info"
-                  onClick={handleSubmit}
+                  onClick={handleSignupClick}
                 >
                   회원가입
                 </Button>
