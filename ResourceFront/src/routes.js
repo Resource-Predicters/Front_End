@@ -40,8 +40,8 @@ const dashboardRoutes = [
   {
     // 로그아웃
     path: "/signup",
-    // name: "Signup",
-    // icon: "nc-icon nc-circle-09",
+    name: "Signup",
+    icon: "nc-icon nc-circle-09",
     component: SignupPage,
     layout: "/admin",
   },

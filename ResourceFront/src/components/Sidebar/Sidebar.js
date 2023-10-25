@@ -49,7 +49,11 @@ function Sidebar({ color, image, routes }) {
         </div>
         <Nav>
           {routes.map((prop, key) => {
-            if (!prop.redirect)
+            if (!prop.redirect) {
+              // prop.name = "signin" 이면 넘어가기
+              if (prop.name === "Signup") {
+                return null;
+              }
               return (
                 <li
                   className={
@@ -69,6 +73,7 @@ function Sidebar({ color, image, routes }) {
                   </NavLink>
                 </li>
               );
+            }
             return null;
           })}
         </Nav>
