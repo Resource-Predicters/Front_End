@@ -15,10 +15,15 @@
 
 
 ## 🤹🏻 기술 스택 선정 이유
-- React : 
-- axios : 
-- Redux : 
-- 
+- React :
+    - React는 가상 DOM을 사용하여 별도의 디버깅없이 변경사항만 업데이트 주므로 성능 향상이 가능합니다.
+    - React는 컴포넌트 기반으로 코드의 재사용성이 높고 유지보수가 용이합니다. 
+    - React는 관련 자료들이 많고, 다양한 라이브러리, 패키지 등을 가지고 있어 개발에 많은 도움이 됩니다. 
+- axios :
+    - Axios는 HTTP요청을 보내고, 데이터를 서버로 보내거나 가져오는 작업을 쉽게 수행할 수 있습니다.
+- Redux :
+    - Redux는 상태관리를 쉽게 해주고, props를 쓰지않고 컴포넌트 간의 데이터를 공유하더나 상태를 전달하는데 용이합니다.
+  
 
 
 ## 📌 프로젝트 목표
@@ -30,6 +35,12 @@
 
 
 ## 📄 UI/UX 설계도
+<center>
+    <h4>메뉴 구조도</h4>
+    <img src="img/메뉴 구성도 (1).jpg" />
+</center>
+
+<br/>
 
 <center>
     <h4>원자재 현황차트</h4>
@@ -66,10 +77,12 @@
 
 <br/>
 
-## ⛓ Flow Chart
 <center>
+    <h4>Flow Chart</h4>
     <img src="img/FlowChart.jpg" />
 </center>
+
+<br/>
 
 ## 🔍 Overview
 
