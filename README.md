@@ -3,12 +3,16 @@
 
 
 ## 🛠️ 기술 스택
-[[뱃지 만드는 방법은 여기 참조]](https://velog.io/@shlee327/shield.io-%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4-%EB%B0%B0%EC%A7%80-%EB%A7%8C%EB%93%A4%EA%B8%B0)
 
-각 프로젝트의 뱃지는 프로젝트에서 사용한 기술들만 나열  
-현재는 많이 쓸만한 것들을 그냥 다 추가해둔 상태
+<h4>Front Tool</h4>
+<br>
+<img src="https://img.shields.io/badge/React.js-61DAFB?style=round&logo=React&logoColor=white" /> 
+<img src="https://img.shields.io/badge/Axios-5A29E4?style=round&logo=Axios&logoColor=white" /> 
 
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=round&logo=HTML5&logoColor=white" /> <img src="https://img.shields.io/badge/CSS3-1572B6?style=round&logo=CSS3&logoColor=white" /> <img src="https://img.shields.io/badge/JS-F7DF1E?style=round&logo=JavaScript&logoColor=white" /> <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=round&logo=Spring&logoColor=white" /> <img src="https://img.shields.io/badge/Spring Security-6DB33F?style=round&logo=SpringSecurity&logoColor=white" /> <img src="https://img.shields.io/badge/React.js-61DAFB?style=round&logo=React&logoColor=white" /> <img src="https://img.shields.io/badge/Redux-764ABC?style=round&logo=Redux&logoColor=white" />
+<h4>Design Library</h4>
+<img src="https://img.shields.io/badge/Mui-007FFF?style=round&logo=Mui&logoColor=white" /> 
+<img src="https://img.shields.io/badge/bootstrap-7952B3?style=round&logo=Bootstrap&logoColor=white" /> 
+<img src="https://img.shields.io/badge/Apexcharts-00A4FF?style=round" /> 
 
 
 
@@ -29,36 +33,36 @@
 ## 📄 UI/UX 설계도
 
 <center>
-    <img src="img/화면설계도(웹) 1024_page-0001.jpg" />
     <h4>원자재 현황차트</h4>
+    <img src="img/화면설계도(웹) 1024_page-0001.jpg" />
 </center>
 
 <br/>
 
 <center>
-    <img src="img/화면설계도(웹) 1024_page-0002.jpg" />
     <h4>상세정보 페이지</h4>
+    <img src="img/화면설계도(웹) 1024_page-0002.jpg" />
 </center>
 
 <br/>
 
 <center>
-    <img src="img/화면설계도(웹) 1024_page-0003.jpg" />
     <h4>가격예측 페이지</h4>
+    <img src="img/화면설계도(웹) 1024_page-0003.jpg" />
 </center>
 
 <br/>
 
 <center>
-    <img src="img/화면설계도(웹) 1024_page-0004.jpg" />
     <h4>로그인 페이지</h4>
+    <img src="img/화면설계도(웹) 1024_page-0004.jpg" />
 </center>
 
 <br/>
 
 <center>
-    <img src="img/화면설계도(웹) 1024_page-0005.jpg" />
     <h4>회원가입 페이지</h4>
+    <img src="img/화면설계도(웹) 1024_page-0005.jpg" />
 </center>
 
 <br/>
@@ -71,7 +75,8 @@
 <center>
     <img src="./img/pic1.png" />
 </center>
-어떤 어떤 어떤 걸 실시간으로 확인할 수 있고 제어할 수 있고~~~~
+<p>원자재 가격 정보를 한 눈에 확인하기 위해서 Apexcharts 라이브러리를 사용하여</p>
+<p>니켈, 리튬, 철스크랩, 코발트의 총 4개의 차트로 현황을 확인할 수 있습니다.</p>
 
 <br>
 
