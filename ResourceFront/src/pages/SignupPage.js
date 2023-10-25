@@ -96,7 +96,9 @@ function SignupPage() {
                 <Row className="justify-content-center">
                   <Col className="pr-1" md="10">
                     <Form.Group>
-                      <label htmlFor="name">Name</label>
+                      <Col md="1" style={{ padding: "6px" }}>
+                        <label htmlFor="name">Name</label>
+                      </Col>
                       <Form.Control
                         type="text"
                         id="name"
@@ -109,7 +111,9 @@ function SignupPage() {
                 <Row className="justify-content-center">
                   <Col className="pr-1" md="10">
                     <Form.Group>
-                      <label htmlFor="email">Email</label>
+                      <Col md="1" style={{ padding: "6px" }}>
+                        <label htmlFor="email">Email</label>
+                      </Col>
                       <Form.Control
                         type="email"
                         id="email"
@@ -122,7 +126,9 @@ function SignupPage() {
                 <Row className="justify-content-center">
                   <Col className="pr-1" md="10">
                     <Form.Group>
-                      <label htmlFor="id">ID</label>
+                      <Col md="1" style={{ padding: "6px" }}>
+                        <label htmlFor="id">ID</label>
+                      </Col>
                       <Form.Control
                         type="text"
                         id="id"
@@ -135,7 +141,9 @@ function SignupPage() {
                 <Row className="justify-content-center">
                   <Col className="pr-1" md="10">
                     <Form.Group>
-                      <label htmlFor="pw">Password</label>
+                      <Col md="1" style={{ padding: "6px" }}>
+                        <label htmlFor="pw">Password</label>
+                      </Col>
                       <Form.Control
                         type="password"
                         id="pw"
