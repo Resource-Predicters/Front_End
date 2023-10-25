@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import { useHistory } from "react-router-dom";
 // react-bootstrap components
 import {
   Badge,
@@ -31,6 +31,12 @@ function SigninPage() {
     // 이곳에서 id와 pw를 처리하거나 서버로 보낼 수 있습니다.
     console.log("ID:", id);
     console.log("Password:", pw);
+  };
+
+  const history = useHistory();
+
+  const handleSignupClick = () => {
+    history.push("/admin/signup");
   };
 
   return (
@@ -87,6 +93,7 @@ function SigninPage() {
                       className="btn-fill pull-left ml-1"
                       type="submit"
                       variant="info"
+                      onClick={handleSignupClick}
                     >
                       회원가입
                     </Button>
