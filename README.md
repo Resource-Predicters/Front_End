@@ -1,7 +1,5 @@
 <h1 align="center"> 원자재 Ai 가격예측서비스 프로젝트 프론트엔드 💻 </h1>
 
-
-
 ## 🛠️ 기술 스택
 
 **Front Tool** <br/>
@@ -19,6 +17,7 @@
 ## 🤹🏻 기술 스택 선정 이유
 - React : 리액트가 유명하다더라
 - axios : 비동기통신할라고 한거지 뭐
+- Redux : 
 - 디자인 라이브러리
 
 
@@ -67,6 +66,10 @@
 
 <br/>
 
+## ⛓ Flow Chart
+<center>
+    <img src="img/FlowChart.jpg" />
+</center>
 
 ## 🔍 Overview
 
