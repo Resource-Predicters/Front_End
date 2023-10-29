@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 // react-bootstrap components
 import {
   Badge,
@@ -27,10 +28,29 @@ function SigninPage() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // 이곳에서 id와 pw를 처리하거나 서버로 보낼 수 있습니다.
-    console.log("ID:", id);
-    console.log("Password:", pw);
+    // e.preventDefault();
+
+    // 보낼 데이터
+    const data = {
+      id: id,
+      password: pw,
+    };
+
+    // POST 요청을 보낼 엔드포인트 URL
+    const url = process.env.REACT_APP_BACKEND_URL + "user/login";
+    // JSON 데이터와 함께 POST 요청 보내기
+    axios
+      .post(url, data, {
+        headers: {
+          "Content-Type": "application/json", // 데이터가 JSON 형식임을 지정
+        },
+      })
+      .then((response) => {
+        console.log("토큰 : .", response.data);
+      })
+      .catch((error) => {
+        console.error("로그인 실패 : ", error);
+      });
   };
 
   const history = useHistory();
@@ -41,6 +61,7 @@ function SigninPage() {
 
   const handleSigninClick = () => {
     history.push("/admin/main");
+    handleSubmit();
   };
 
   return (

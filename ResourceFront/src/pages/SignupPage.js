@@ -60,24 +60,26 @@ function SignupPage() {
 
   const handleSignupClick = () => {
     history.push("/admin/signin");
+    sendSignupData();
   };
 
   // 백엔드로 회원가입 데이터 보내기
-  const sendSignupData = async function sendData(userData) {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}user/join`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
-    } catch (error) {
-      console.error("회원가입 요청 중 오류 발생:", error);
-    }
+  const sendSignupData = () => {
+    const url = process.env.REACT_APP_BACKEND_URL + "user/join";
+    console.log(url);
+    // JSON 데이터와 함께 POST 요청 보내기
+    axios
+      .post(url, userData, {
+        headers: {
+          "Content-Type": "application/json", // 데이터가 JSON 형식임을 지정
+        },
+      })
+      .then((response) => {
+        console.log("토큰 : .", response.data);
+      })
+      .catch((error) => {
+        console.error("로그인 실패 : ", error);
+      });
   };
 
   return (
