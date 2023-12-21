@@ -109,7 +109,7 @@
 ### 3. AI 가격예측 페이지
 
 <center>
-    <img src="./img/pic1.png" />
+    <img src="./img/예측.JPG" />
 </center>
 <p>👉현재 일자 기준으로 AI모델을 적용한 7일 단위의 결과값을 차트로 제공합니다.</p>
 
